@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <el-button type="primary" @click="toDatabase">返回主页面</el-button>
+    <el-button type="primary" @click="toDatabase">返回首页</el-button>
     <el-button type="success" @click="qrcode">点击生成二维码</el-button>
     <div id="qrcode" ref="qrcode"></div>
   </div>

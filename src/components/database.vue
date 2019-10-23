@@ -58,7 +58,12 @@
     </el-dialog>
     <div class="box">
       <div>获取的数据：</div>
-      <el-table height="373" v-loading="loading" :data="tableData" style="width: 600px;margin:auto;">
+      <el-table
+        height="373"
+        v-loading="loading"
+        :data="tableData"
+        style="width: 600px;margin:auto;"
+      >
         <el-table-column prop="name" label="姓名" align="center"></el-table-column>
         <el-table-column prop="age" label="年龄" align="center"></el-table-column>
         <el-table-column prop="sex" label="性别" align="center"></el-table-column>
@@ -70,15 +75,16 @@
         </el-table-column>
       </el-table>
       <el-pagination
-      background
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="currentPage4"
-      :page-sizes="[5, 10, 15, 20]"
-      :page-size="pageSize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="allNum">
-    </el-pagination>
+        background
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        
+        :current-page.sync="currentPage4"
+        :page-sizes="[5, 10, 15, 20]"
+        :page-size="pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="allNum"
+      ></el-pagination>
     </div>
   </div>
 </template>
@@ -87,11 +93,11 @@ import { selectValue, addValue, deleteValue, updateValue } from "../api/public";
 export default {
   data() {
     return {
-      allTableData:[],
-      pageSize:5,
-      pageNum:0,
-      currentPage4:1,
-      allNum:0,
+      allTableData: [],
+      pageSize: 5,
+      pageNum: 0,
+      currentPage4: 1,
+      allNum: 0,
       loading: false,
       formLabelWidth: "120px",
       addData: {
@@ -122,14 +128,14 @@ export default {
       this.$router.push("/");
     },
     handleSizeChange(val) {
-      this.pageSize=val;
-      this.tableData=this.allTableData.slice(0,val)
-        // console.log(`每页 ${val} 条`);
-      },
-      handleCurrentChange(val) {
-         this.tableData=this.allTableData.slice(val*5-5,val*5)
-        // console.log(`当前页: ${val}`);
-      },
+      this.pageSize = val;
+      this.tableData = this.allTableData.slice(0, val);
+      // console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      this.tableData = this.allTableData.slice(val * this.pageSize - this.pageSize, val * this.pageSize);
+      // console.log(`当前页: ${val}`);
+    },
     add(addData) {
       // var a="name"
       // let params = { [a]: "", url: "", type: "", sex: "" };  [a]动态添加key值
@@ -181,17 +187,17 @@ export default {
       let params = [{ column: "_id", value: updateData._id }]; // 查询条件
       let data1 = this.oldData;
       let data2 = updateData;
-      let obj = {};
+      let newData = {};
       for (let item1 in data1) {
         for (let item2 in data2) {
           if (item1 == item2) {
             if (data1[item1] != data2[item2]) {
-              obj[item1] = data2[item2];
+              newData[item1] = data2[item2];
             }
           }
         }
       }
-      let newData = obj; //更新数据
+      // let newData = obj; //更新数据
       updateValue("MY_TABLE", params, newData).then(res => {
         if (res.status == "200") {
           this.$message({
@@ -205,19 +211,20 @@ export default {
     },
     //表格显示数据
     showTableData(value) {
-      // this.currentPage4=1;
+      this.currentPage4=1;
       this.loading = true;
-      let sch=[]
-      if(value){
-        sch=value;
+      let sch = [];
+      if (value) {
+        sch = value;
       }
       selectValue("MY_TABLE", sch).then(res => {
-        let pageSize=this.pageSize;
-        this.allTableData=res.data;
-        this.allNum=res.data.length;
+        let pageSize = this.pageSize;
+        this.allTableData = res.data;
+        this.allNum = res.data.length;
         this.tableData = res.data.slice(0,pageSize);
         this.loading = false;
         this.dialogFormVisible1 = false;
+        
       });
     }
   },

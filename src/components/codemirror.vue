@@ -1,9 +1,12 @@
 <template>
   <div>
-    <el-button type="primary" @click="toDatabase">返回主页面</el-button>
+    <div id="app">
+      <el-button type="primary" @click="toDatabase">返回首页</el-button>
+    </div>
+
     <h3>
-      通过 npm install --save codemirror 下载；然后在组件中直接引用；<br>
-      通过 import "codemirror/theme/idea.css"和theme: 'idea'（名字一样）来设置高亮主题
+      通过 npm install --save codemirror 下载；然后在组件中直接引用；
+      <br />通过 import "codemirror/theme/idea.css"和theme: 'idea'（名字一样）来设置高亮主题
     </h3>
     <div class="box">
       <textarea ref="mycode" class="codesql" v-model="code" style="height:200px;width:600px;"></textarea>
@@ -14,7 +17,7 @@
 import "codemirror/theme/ambiance.css";
 import "codemirror/lib/codemirror.css";
 import "codemirror/addon/hint/show-hint.css";
-import "codemirror/theme/idea.css";//引入要使用的主题颜色，不引入则使用默认主题
+import "codemirror/theme/idea.css"; //引入要使用的主题颜色，不引入则使用默认主题
 let CodeMirror = require("codemirror/lib/codemirror");
 require("codemirror/addon/edit/matchbrackets");
 require("codemirror/addon/selection/active-line");
@@ -40,7 +43,7 @@ export default {
       smartIndent: true,
       lineNumbers: true,
       matchBrackets: true,
-      theme: 'idea',//设置主题，不设置的会使用默认主题
+      theme: "idea", //设置主题，不设置的会使用默认主题
       // autofocus: true,
       extraKeys: { Ctrl: "autocomplete" }, //自定义快捷键
       hintOptions: {
@@ -59,6 +62,10 @@ export default {
 };
 </script>
 <style scoped>
+#app {
+  text-align: center;
+  margin-top: 10px;
+}
 .box {
   margin-top: 20px;
 }

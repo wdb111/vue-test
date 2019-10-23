@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <el-button type="primary" @click="toDatabase">返回主页面</el-button>
+    <el-button type="primary" @click="toDatabase">返回首页</el-button>
     <div id="app">
       姓名：{{ data.name }}
       <br />

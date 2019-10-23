@@ -16,7 +16,7 @@
     </div>
   </transition>
     <div id="app">
-      <el-button type="primary" @click="toDatabase">返回主页面</el-button>
+      <el-button type="primary" @click="toDatabase">返回首页</el-button>
     </div>
     <div class="inputkuang">
       <div class="sub-title">激活即列出输入建议</div>
