@@ -7,6 +7,7 @@ import $set from '@/components/$set'
 import element from '@/components/elementDemo'
 import codemirror from '@/components/codemirror'
 import backTop from '@/components/backTop'
+import map from '@/components/map'
 
 Vue.use(Router)
 
@@ -45,6 +46,11 @@ export default new Router({
       path:'/to_backTop',
       name:'backTop',
       component:backTop
-    }
+    },
+    {
+      path:'/to_map',
+      name:'map',
+      component:map
+    },
   ]
 })

@@ -78,7 +78,6 @@
         background
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        
         :current-page.sync="currentPage4"
         :page-sizes="[5, 10, 15, 20]"
         :page-size="pageSize"

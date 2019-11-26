@@ -1,20 +1,20 @@
 <template>
   <div>
     <transition name="el-fade-in">
-    <div
-      v-if="visible"
-      @click.stop="handleClick"
-      :style="{
+      <div
+        v-if="visible"
+        @click.stop="handleClick"
+        :style="{
         'right': styleRight,
         'bottom': styleBottom
       }"
-      class="el-backtop">
-      
-      <slot>
-        <el-icon name="caret-top"></el-icon>
-      </slot>
-    </div>
-  </transition>
+        class="el-backtop"
+      >
+        <slot>
+          <el-icon name="caret-top"></el-icon>
+        </slot>
+      </div>
+    </transition>
     <div id="app">
       <el-button type="primary" @click="toDatabase">返回首页</el-button>
     </div>
@@ -31,12 +31,44 @@
       <el-button type="primary" @click="submit(state1)">提交</el-button>
       <h3>{{msg}}</h3>
     </div>
-   
+    <div style="width:300px">
+      <el-tabs
+        tab-position="right"
+        v-model="editableTabsValue"
+        type="card"
+        editable
+        @edit="handleTabsEdit"
+      >
+        <el-tab-pane
+          :key="item.name"
+          v-for="(item) in editableTabs"
+          :label="item.title"
+          :name="item.name"
+        >{{item.content}}</el-tab-pane>
+      </el-tabs>
+    </div>
+    <div>
+      <el-table ref="table" :data="tableData">
+    <el-table-column type="selection"></el-table-column>
+    <el-table-column label="日期" prop="date"></el-table-column>
+    <el-table-column label="姓名" prop="name"></el-table-column>
+    <el-table-column label="附件">
+      <template slot-scope="props">
+        <el-button type="primary" @click="handleCheck(props.row)">查看附件</el-button>
+      </template>
+    </el-table-column>
+    <el-table-column type="expand">
+      <template slot-scope="props">
+        <div>{{props.row.name}}</div>
+      </template>
+    </el-table-column>
+  </el-table>
+    </div>
   </div>
 </template>
 <script>
 import { getValue } from "../api/public";
-import throttle from 'throttle-debounce/throttle';
+import throttle from "throttle-debounce/throttle";
 export default {
   props: {
     visibilityHeight: {
@@ -55,7 +87,37 @@ export default {
   },
   data() {
     return {
-
+       tableData: [
+          {
+            date: '2016-05-03',
+            name: '王小虎',
+            province: '上海',
+            city: '普陀区',
+            address: '上海市普陀区金沙江路 1518 弄',
+            zip: 200333
+          }, {
+            date: '2016-05-02',
+            name: '王小虎',
+            province: '上海',
+            city: '普陀区',
+            address: '上海市普陀区金沙江路 1518 弄',
+            zip: 200333
+          }
+        ],
+      editableTabsValue: "2",
+      editableTabs: [
+        {
+          title: "Tab 1",
+          name: "1",
+          content: "Tab 1 content"
+        },
+        {
+          title: "Tab 2",
+          name: "2",
+          content: "Tab 2 content"
+        }
+      ],
+      tabIndex: 2,
       el: null,
       container: null,
       visible: false,
@@ -73,6 +135,39 @@ export default {
     }
   },
   methods: {
+     handleCheck(row) {
+        const $table = this.$refs.table
+        $table.toggleRowExpansion(row)
+        $table.toggleRowSelection(row)
+      },
+    handleTabsEdit(targetName, action) {
+      if (action === "add") {
+        let newTabName = ++this.tabIndex + "";
+        this.editableTabs.push({
+          title: "New Tab",
+          name: newTabName,
+          content: "New Tab content"
+        });
+        this.editableTabsValue = newTabName;
+      }
+      if (action === "remove") {
+        let tabs = this.editableTabs;
+        let activeName = this.editableTabsValue;
+        if (activeName === targetName) {
+          tabs.forEach((tab, index) => {
+            if (tab.name === targetName) {
+              let nextTab = tabs[index + 1] || tabs[index - 1];
+              if (nextTab) {
+                activeName = nextTab.name;
+              }
+            }
+          });
+        }
+
+        this.editableTabsValue = activeName;
+        this.editableTabs = tabs.filter(tab => tab.name !== targetName);
+      }
+    },
     toDatabase() {
       this.$router.push("/");
     },
@@ -124,7 +219,7 @@ export default {
     },
     handleClick(e) {
       this.scrollToTop();
-      this.$emit('click', e);
+      this.$emit("click", e);
     },
     scrollToTop() {
       let el = this.el;
@@ -143,16 +238,18 @@ export default {
     this.restaurants = this.loadAll();
     this.init();
     this.throttledScrollHandler = throttle(300, this.onScroll);
-    this.container.addEventListener('scroll', this.throttledScrollHandler);
+    this.container.addEventListener("scroll", this.throttledScrollHandler);
   },
   created() {},
   beforeDestroy() {
-    this.container.removeEventListener('scroll', this.throttledScrollHandler);
+    this.container.removeEventListener("scroll", this.throttledScrollHandler);
   }
-
 };
 </script>
 <style>
+.el-table__expand-column .cell {
+  display: none;
+}
 </style>
 <style scoped>
 .inputkuang {

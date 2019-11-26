@@ -7,6 +7,7 @@
     <el-button class="button" type="primary" @click="to_element">elementUI例子</el-button>
     <el-button class="button" type="primary" @click="to_codemirror">在线编辑器</el-button>
     <el-button class="button" type="primary" @click="to_backTop">backcTop回到顶部</el-button>
+    <el-button class="button" type="primary" @click="to_map">地图</el-button>
   </div>
 </template>
 
@@ -36,6 +37,9 @@ export default {
     },
     to_backTop(){
       this.$router.push('/to_backTop')
+    },
+    to_map(){
+      this.$router.push('/to_map')
     }
     
   },
