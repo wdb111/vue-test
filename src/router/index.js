@@ -8,6 +8,12 @@ import element from '@/components/elementDemo'
 import codemirror from '@/components/codemirror'
 import backTop from '@/components/backTop'
 import map from '@/components/map'
+import eltable from '@/components/ElementUI/Table'
+import elinput from '@/components/ElementUI/Input'
+import elcollapse from '@/components/ElementUI/Collapse'
+import elnavmenu from '@/components/ElementUI/NavMenu'
+import elupload from '@/components/ElementUI/Upload'
+// import elcascader from '@/components/ElementUI/Cascader'
 
 Vue.use(Router)
 
@@ -35,7 +41,39 @@ export default new Router({
     {
       path: '/to_element',
       name: 'element',
-      component: element
+      component: element,
+      children:[
+        {
+          path: '/to_element/el-table',
+          name: 'eltable',
+          component: eltable
+        },
+        {
+          path: '/to_element/el-input',
+          name: 'elinput',
+          component: elinput
+        },
+        {
+          path: '/to_element/el-collapse',
+          name: 'elcollapse',
+          component: elcollapse
+        },
+        {
+          path: '/to_element/el-navmenu',
+          name: 'elnavmenu',
+          component: elnavmenu
+        },
+        {
+          path: '/to_element/el-upload',
+          name: 'elupload',
+          component: elupload
+        },
+        // {
+        //   path: '/to_element/el-cascader',
+        //   name: 'elcascader',
+        //   component: elcascader
+        // },
+      ]
     },
     {
       path: '/to_codemirror',
