@@ -13,7 +13,7 @@ import elinput from '@/components/ElementUI/Input'
 import elcollapse from '@/components/ElementUI/Collapse'
 import elnavmenu from '@/components/ElementUI/NavMenu'
 import elupload from '@/components/ElementUI/Upload'
-// import elcascader from '@/components/ElementUI/Cascader'
+import elcascader from '@/components/ElementUI/Cascader'
 
 Vue.use(Router)
 
@@ -68,11 +68,11 @@ export default new Router({
           name: 'elupload',
           component: elupload
         },
-        // {
-        //   path: '/to_element/el-cascader',
-        //   name: 'elcascader',
-        //   component: elcascader
-        // },
+        {
+          path: '/to_element/el-cascader',
+          name: 'elcascader',
+          component: elcascader
+        },
       ]
     },
     {
