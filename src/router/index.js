@@ -7,7 +7,9 @@ import $set from '@/components/$set'
 import element from '@/components/elementDemo'
 import codemirror from '@/components/codemirror'
 import backTop from '@/components/backTop'
+import less from '@/components/Less'
 import map from '@/components/map'
+import date from '@/components/Date'
 import eltable from '@/components/ElementUI/Table'
 import elinput from '@/components/ElementUI/Input'
 import elcollapse from '@/components/ElementUI/Collapse'
@@ -37,6 +39,32 @@ export default new Router({
       path: '/to_set',
       name: '$set',
       component: $set
+    },
+   
+    {
+      path: '/to_codemirror',
+      name: 'codemirror',
+      component: codemirror
+    },
+    {
+      path:'/to_backTop',
+      name:'backTop',
+      component:backTop
+    },
+    {
+      path:'/to_date',
+      name:'Date',
+      component:date
+    },
+    {
+      path:'/to_less',
+      name:'less',
+      component:less
+    },
+    {
+      path:'/to_map',
+      name:'map',
+      component:map
     },
     {
       path: '/to_element',
@@ -74,21 +102,6 @@ export default new Router({
           component: elcascader
         },
       ]
-    },
-    {
-      path: '/to_codemirror',
-      name: 'codemirror',
-      component: codemirror
-    },
-    {
-      path:'/to_backTop',
-      name:'backTop',
-      component:backTop
-    },
-    {
-      path:'/to_map',
-      name:'map',
-      component:map
     },
   ]
 })

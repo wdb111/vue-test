@@ -1,12 +1,17 @@
 <template>
   <div class="hello">
-    <h1>主页</h1>
+    <header>
+      <img src="../assets/hero.png" alt />
+      <span>主页</span>
+    </header>
     <el-button class="button" type="primary" @click="to_database">操作数据库</el-button>
     <el-button class="button" type="primary" @click="to_erweima">生成二维码</el-button>
     <el-button class="button" type="primary" @click="to_set">$set（实时添加属性）</el-button>
     <el-button class="button" type="primary" @click="to_element">elementUI例子</el-button>
-    <el-button class="button" type="primary" @click="to_codemirror">在线编辑器</el-button>
+    <el-button class="button" type="primary" @click="to_codemirror">代码高亮编辑器</el-button>
     <el-button class="button" type="primary" @click="to_backTop">backcTop回到顶部</el-button>
+    <el-button class="button" type="primary" @click="to_date">显示当前时间</el-button>
+    <el-button class="button" type="primary" @click="to_less">less的使用</el-button>
     <el-button class="button" type="primary" @click="to_map">地图</el-button>
   </div>
 </template>
@@ -15,9 +20,7 @@
 export default {
   name: "index",
   data() {
-    return {
-       
-    };
+    return {};
   },
   methods: {
     to_database() {
@@ -32,26 +35,35 @@ export default {
     to_element() {
       this.$router.push("/to_element");
     },
-    to_codemirror(){
-      this.$router.push('/to_codemirror')
+    to_codemirror() {
+      this.$router.push("/to_codemirror");
     },
-    to_backTop(){
-      this.$router.push('/to_backTop')
+    to_backTop() {
+      this.$router.push("/to_backTop");
     },
-    to_map(){
-      this.$router.push('/to_map')
+    to_date() {
+      this.$router.push("/to_date");
+    },
+    to_less() {
+      this.$router.push("/to_less");
+    },
+    to_map() {
+      this.$router.push("/to_map");
     }
-    
   },
-  created() {
-  }
+  created() {}
 };
 </script>
 
 <style scoped>
+header > img {
+  width: 150px;
+  height: 50px;
+}
+
 .hello {
-  margin-top: 60px;
-  text-align: center;
+  width: 100%;
+  height: 100%;
 }
 .button {
   margin-top: 20px;

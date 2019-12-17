@@ -1,0 +1,29 @@
+@top: 10px;
+@textAlign: center;
+
+#app {
+  text-align: @textAlign;
+  margin-top: @top;
+}
+
+@nice-blue: #5b83ad;
+@light-blue: @nice-blue + rgb(185, 74, 40);
+
+h1 {
+  background: @light-blue;
+  margin-top: @top + 10;
+  color: @nice-blue + #061c35;
+}
+
+.contant {
+  margin-left: 200px;
+  
+  pre {
+    width: 400px;
+    padding: 20px ;
+    box-sizing: border-box;
+    font: 16px "微软雅黑";
+    color: @nice-blue + #007013;
+    background-color: @nice-blue + #000000;
+  }
+}
