@@ -7,7 +7,7 @@ import $set from '@/components/$set'
 import element from '@/components/elementDemo'
 import codemirror from '@/components/codemirror'
 import backTop from '@/components/backTop'
-import less from '@/components/Less'
+import less from '@/components/Less/Less'
 import map from '@/components/map'
 import date from '@/components/Date'
 import eltable from '@/components/ElementUI/Table'
@@ -16,6 +16,8 @@ import elcollapse from '@/components/ElementUI/Collapse'
 import elnavmenu from '@/components/ElementUI/NavMenu'
 import elupload from '@/components/ElementUI/Upload'
 import elcascader from '@/components/ElementUI/Cascader'
+import tinymce from '@/components/Tinymce/Tinymce'
+import wangeditor from '@/components/Wangeditor/index'
 
 Vue.use(Router)
 
@@ -65,6 +67,16 @@ export default new Router({
       path:'/to_map',
       name:'map',
       component:map
+    },
+    {
+      path:'/to_tinymce',
+      name:'tinymce',
+      component:tinymce
+    },
+    {
+      path:'/to_wangeditor',
+      name:'wangeditor',
+      component:wangeditor
     },
     {
       path: '/to_element',
