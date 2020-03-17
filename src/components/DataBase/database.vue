@@ -88,7 +88,7 @@
   </div>
 </template>
 <script>
-import { selectValue, addValue, deleteValue, updateValue } from "../api/public";
+import { selectValue, addValue, deleteValue, updateValue } from "../../api/public";
 export default {
   data() {
     return {

@@ -1,15 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/index'
-import database from '@/components/database'
-import Erweima from '@/components/Erweima'
-import $set from '@/components/$set'
-import element from '@/components/elementDemo'
-import codemirror from '@/components/codemirror'
-import backTop from '@/components/backTop'
+import database from '@/components/DataBase/database'
+import Erweima from '@/components/QRcode/Erweima'
+import element from '@/components/ElementUI/elementDemo'
+import codemirror from '@/components/CodeMirror/codemirror'
+import backTop from '@/components/BackTop/backTop'
 import less from '@/components/Less/Less'
-import map from '@/components/map'
-import date from '@/components/Date'
+import map from '@/components/Map/map'
+import date from '@/components/Date/Date'
 import eltable from '@/components/ElementUI/Table'
 import elinput from '@/components/ElementUI/Input'
 import elcollapse from '@/components/ElementUI/Collapse'
@@ -18,11 +17,13 @@ import elupload from '@/components/ElementUI/Upload'
 import elcascader from '@/components/ElementUI/Cascader'
 import tinymce from '@/components/Tinymce/Tinymce'
 import wangeditor from '@/components/Wangeditor/index'
+import myPlugin from '@/components/myPlugin/myplugin'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [{
+  routes: [
+    {
       path: '/',
       name: 'index',
       component: index
@@ -36,11 +37,6 @@ export default new Router({
       path: '/to_Erweima',
       name: 'Erweima',
       component: Erweima
-    },
-    {
-      path: '/to_set',
-      name: '$set',
-      component: $set
     },
    
     {
@@ -77,6 +73,11 @@ export default new Router({
       path:'/to_wangeditor',
       name:'wangeditor',
       component:wangeditor
+    },
+    {
+      path:'/to_myplugin',
+      name:'myPlugin',
+      component:myPlugin
     },
     {
       path: '/to_element',
