@@ -17,7 +17,6 @@ import elupload from '@/components/ElementUI/Upload'
 import elcascader from '@/components/ElementUI/Cascader'
 import tinymce from '@/components/Tinymce/Tinymce'
 import wangeditor from '@/components/Wangeditor/index'
-import myPlugin from '@/components/myPlugin/myplugin'
 
 Vue.use(Router)
 
@@ -73,11 +72,6 @@ export default new Router({
       path:'/to_wangeditor',
       name:'wangeditor',
       component:wangeditor
-    },
-    {
-      path:'/to_myplugin',
-      name:'myPlugin',
-      component:myPlugin
     },
     {
       path: '/to_element',

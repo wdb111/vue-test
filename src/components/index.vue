@@ -13,7 +13,6 @@
     <el-button class="button" type="primary" @click="to_tinymce">tinymce富文本编辑器</el-button>
     <el-button class="button" type="primary" @click="to_wangeditor">wangeditor富文本编辑器</el-button>
     <el-button class="button" type="primary" @click="to_map">地图</el-button>
-    <el-button class="button" type="primary" @click="to_myplugin">自定义组件</el-button>
   </div>
 </template>
 
@@ -53,9 +52,6 @@ export default {
     },
     to_map() {
       this.$router.push("/to_map");
-    },
-    to_myplugin(){
-      this.$router.push("to_myplugin")
     }
   },
   created() {}
