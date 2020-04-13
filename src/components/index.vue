@@ -1,16 +1,10 @@
 <template>
   <div class="hello">
     <header>
-      <div>
-        <img src="../assets/hero.png" alt />
-      </div>
-      <div>
-        <h1>主页</h1>
-      </div>
+      <h1>主页</h1>
     </header>
     <el-button class="button" type="primary" @click="to_database">操作数据库</el-button>
     <el-button class="button" type="primary" @click="to_erweima">生成二维码</el-button>
-    <el-button class="button" type="primary" @click="to_set">$set（实时添加属性）</el-button>
     <el-button class="button" type="primary" @click="to_element">elementUI例子</el-button>
     <el-button class="button" type="primary" @click="to_codemirror">代码高亮编辑器</el-button>
     <el-button class="button" type="primary" @click="to_backTop">backcTop回到顶部</el-button>
@@ -19,72 +13,76 @@
     <el-button class="button" type="primary" @click="to_tinymce">tinymce富文本编辑器</el-button>
     <el-button class="button" type="primary" @click="to_wangeditor">wangeditor富文本编辑器</el-button>
     <el-button class="button" type="primary" @click="to_map">地图</el-button>
+    <el-button class="button" type="primary" @click="to_myplugin">自定义组件</el-button>
+    <div :style="[myStyle, yourStyle]">啊实打实大</div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "index",
-  data() {
-    return {};
-  },
-  methods: {
-    to_database() {
-      this.$router.push("/to_database");
+  export default {
+    name: "index",
+    data() {
+      return {
+        myStyle:{
+        "font-size":"20px"
+        },
+        yourStyle:{
+          color:"red"
+        }
+      };
     },
-    to_erweima() {
-      this.$router.push("/to_Erweima");
+    methods: {
+      to_database() {
+        this.$router.push("/to_database");
+      },
+      to_erweima() {
+        this.$router.push("/to_Erweima");
+      },
+      to_element() {
+        this.$router.push("/to_element");
+      },
+      to_codemirror() {
+        this.$router.push("/to_codemirror");
+      },
+      to_backTop() {
+        this.$router.push("/to_backTop");
+      },
+      to_date() {
+        this.$router.push("/to_date");
+      },
+      to_less() {
+        this.$router.push("/to_less");
+      },
+      to_tinymce() {
+        this.$router.push("/to_tinymce");
+      },
+      to_wangeditor() {
+        this.$router.push("/to_wangeditor");
+      },
+      to_map() {
+        this.$router.push("/to_map");
+      },
+      to_myplugin() {
+        this.$router.push("to_myplugin")
+      }
     },
-    to_set() {
-      this.$router.push("/to_set");
-    },
-    to_element() {
-      this.$router.push("/to_element");
-    },
-    to_codemirror() {
-      this.$router.push("/to_codemirror");
-    },
-    to_backTop() {
-      this.$router.push("/to_backTop");
-    },
-    to_date() {
-      this.$router.push("/to_date");
-    },
-    to_less() {
-      this.$router.push("/to_less");
-    },
-    to_tinymce() {
-      this.$router.push("/to_tinymce");
-    },
-    to_wangeditor() {
-      this.$router.push("/to_wangeditor");
-    },
-    to_map() {
-      this.$router.push("/to_map");
+    created() {
     }
-  },
-  created() {}
-};
+  };
 </script>
 
 <style scoped>
-header{
-  display: flex;
-  align-items: center;
-}
-header  img {
-  width: 150px;
-  height: 50px;
-}
-header>div:last-child{
-  width: calc(100% - 300px);
-  text-align: center;
-}
-.hello {
-  width: 100%;
-  height: 100%;
-}
-.button {
-  margin-top: 20px;
-}
+
+  header {
+    text-align: center;
+  }
+
+  .hello {
+    width: 100%;
+    height: 100%;
+  }
+
+  .button {
+    margin-top: 20px;
+  }
 </style>

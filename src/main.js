@@ -5,6 +5,9 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import myPlugin from "wdb-npm-practice";
+
+Vue.use(myPlugin);
 Vue.use(ElementUI);
 Vue.config.productionTip = false
 
