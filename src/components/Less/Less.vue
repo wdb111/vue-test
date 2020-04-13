@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div id="app">
-      <el-button type="primary" @click="toDatabase">返回首页</el-button>
-    </div>
     <h1>less在vue中的使用</h1>
     <div class="contant">
       第一步：

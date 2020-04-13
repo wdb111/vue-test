@@ -15,11 +15,6 @@
         </slot>
       </div>
     </transition>
-   
-    <div id="app">
-      <el-button type="primary" @click="toDatabase">返回首页</el-button>
-      <h3>backTop回到顶部</h3>
-    </div>
     <div class="box"></div>
   </div>
 </template>

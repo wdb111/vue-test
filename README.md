@@ -1,6 +1,6 @@
 # my-project
 
-> A Vue.js project
+> 我的vue项目，用户测试各种功能及插件
 
 ## Build Setup
 

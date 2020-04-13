@@ -17,7 +17,7 @@ import elupload from '@/components/ElementUI/Upload'
 import elcascader from '@/components/ElementUI/Cascader'
 import tinymce from '@/components/Tinymce/Tinymce'
 import wangeditor from '@/components/Wangeditor/index'
-import myPlugin from '@/components/myPlugin/myplugin'
+import Steps from "@/components/ElementUI/Steps"
 
 Vue.use(Router)
 
@@ -26,95 +26,102 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: index
-    },
-    {
-      path: '/to_database',
-      name: 'database',
-      component: database
-    },
-    {
-      path: '/to_Erweima',
-      name: 'Erweima',
-      component: Erweima
-    },
-   
-    {
-      path: '/to_codemirror',
-      name: 'codemirror',
-      component: codemirror
-    },
-    {
-      path:'/to_backTop',
-      name:'backTop',
-      component:backTop
-    },
-    {
-      path:'/to_date',
-      name:'Date',
-      component:date
-    },
-    {
-      path:'/to_less',
-      name:'less',
-      component:less
-    },
-    {
-      path:'/to_map',
-      name:'map',
-      component:map
-    },
-    {
-      path:'/to_tinymce',
-      name:'tinymce',
-      component:tinymce
-    },
-    {
-      path:'/to_wangeditor',
-      name:'wangeditor',
-      component:wangeditor
-    },
-    {
-      path:'/to_myplugin',
-      name:'myPlugin',
-      component:myPlugin
-    },
-    {
-      path: '/to_element',
-      name: 'element',
-      component: element,
-      children:[
-        {
-          path: '/to_element/el-table',
-          name: 'eltable',
-          component: eltable
+      component: index,
+      children: [{
+          path: '/to_database',
+          name: 'database',
+          component: database
         },
         {
-          path: '/to_element/el-input',
-          name: 'elinput',
-          component: elinput
+          path: '/to_Erweima',
+          name: 'Erweima',
+          component: Erweima
+        },
+
+        {
+          path: '/to_codemirror',
+          name: 'codemirror',
+          component: codemirror
         },
         {
-          path: '/to_element/el-collapse',
-          name: 'elcollapse',
-          component: elcollapse
+          path: '/to_backTop',
+          name: 'backTop',
+          component: backTop
         },
         {
-          path: '/to_element/el-navmenu',
-          name: 'elnavmenu',
-          component: elnavmenu
+          path: '/to_date',
+          name: 'Date',
+          component: date
         },
         {
-          path: '/to_element/el-upload',
-          name: 'elupload',
-          component: elupload
+          path: '/to_less',
+          name: 'less',
+          component: less
+        }, {
+          path: '/to_lodash',
+          name: 'lodash',
+          component: () => import("@/components/lodash")
         },
         {
-          path: '/to_element/el-cascader',
-          name: 'elcascader',
-          component: elcascader
+          path: '/to_map',
+          name: 'map',
+          component: map
+        },
+        {
+          path: '/to_tinymce',
+          name: 'tinymce',
+          component: tinymce
+        },
+        {
+          path: '/to_wangeditor',
+          name: 'wangeditor',
+          component: wangeditor
+        },
+        {
+          path: '/to_element',
+          name: 'element',
+          component: element,
+          children: [
+
+            {
+              path: 'el-steps',
+              name: 'Steps',
+              component: Steps
+            },
+            {
+              path: 'el-table',
+              name: 'eltable',
+              component: eltable
+            },
+            {
+              path: 'el-input',
+              name: 'elinput',
+              component: elinput
+            },
+            {
+              path: 'el-collapse',
+              name: 'elcollapse',
+              component: elcollapse
+            },
+            {
+              path: 'el-navmenu',
+              name: 'elnavmenu',
+              component: elnavmenu
+            },
+            {
+              path: 'el-upload',
+              name: 'elupload',
+              component: elupload
+            },
+            {
+              path: 'el-cascader',
+              name: 'elcascader',
+              component: elcascader
+            },
+          ]
         },
       ]
     },
+
   ]
 })

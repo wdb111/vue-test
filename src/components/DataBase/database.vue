@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <el-button type="primary" @click="toIndex">返回首页</el-button>
     <div class="data">
       <el-button type="primary" @click="dialogFormVisible = true">添加数据</el-button>
       <el-button type="primary" @click="dialogFormVisible1 = true">查询数据</el-button>
