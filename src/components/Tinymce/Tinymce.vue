@@ -1,9 +1,6 @@
 
 <template>
   <div id="app">
-    <div class="app">
-      <el-button type="primary" @click="toDatabase">返回首页</el-button>
-    </div>
     <h1>Tinymce富文本编辑器</h1>
     <div class="tinymce">
       <editor id="tinymce" v-model="tinymceHtml" :init="init"></editor>

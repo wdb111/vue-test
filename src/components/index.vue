@@ -1,18 +1,10 @@
 <template>
   <div class="hello">
     <header>
-        <h1>主页</h1>
+      <h1>主页</h1>
     </header>
-    <el-button class="button" type="primary" @click="to_database">操作数据库</el-button>
-    <el-button class="button" type="primary" @click="to_erweima">生成二维码</el-button>
-    <el-button class="button" type="primary" @click="to_element">elementUI例子</el-button>
-    <el-button class="button" type="primary" @click="to_codemirror">代码高亮编辑器</el-button>
-    <el-button class="button" type="primary" @click="to_backTop">backcTop回到顶部</el-button>
-    <el-button class="button" type="primary" @click="to_date">显示当前时间</el-button>
-    <el-button class="button" type="primary" @click="to_less">less的使用</el-button>
-    <el-button class="button" type="primary" @click="to_tinymce">tinymce富文本编辑器</el-button>
-    <el-button class="button" type="primary" @click="to_wangeditor">wangeditor富文本编辑器</el-button>
-    <el-button class="button" type="primary" @click="to_map">地图</el-button>
+    <el-button v-for="(item,index) in dataList" :key="index" class="button" type="primary" @click="to_page(item.url)">{{item.name}}</el-button>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -20,46 +12,65 @@
 export default {
   name: "index",
   data() {
-    return {};
+    return {
+      dataList:[
+        {
+          name:"操作数据库",
+          url:"/to_database"
+        },
+        {
+          name:"生成二维码",
+          url:"/to_Erweima"
+        },
+        {
+          name:"elementUI例子",
+          url:"/to_element"
+        },
+        {
+          name:"代码高亮编辑器",
+          url:"/to_codemirror"
+        },
+        {
+          name:"backcTop回到顶部",
+          url:"/to_backTop"
+        },
+        {
+          name:"显示当前时间",
+          url:"/to_date"
+        },
+        {
+          name:"less的使用",
+          url:"/to_less"
+        },
+        {
+          name:"lodash的使用",
+          url:"/to_lodash"
+        },
+        {
+          name:"tinymce富文本编辑器",
+          url:"/to_tinymce"
+        },
+        {
+          name:"wangeditor富文本编辑器",
+          url:"/to_wangeditor"
+        },
+        {
+          name:"地图",
+          url:"/to_map"
+        }
+      ]
+    };
   },
   methods: {
-    to_database() {
-      this.$router.push("/to_database");
-    },
-    to_erweima() {
-      this.$router.push("/to_Erweima");
-    },
-    to_element() {
-      this.$router.push("/to_element");
-    },
-    to_codemirror() {
-      this.$router.push("/to_codemirror");
-    },
-    to_backTop() {
-      this.$router.push("/to_backTop");
-    },
-    to_date() {
-      this.$router.push("/to_date");
-    },
-    to_less() {
-      this.$router.push("/to_less");
-    },
-    to_tinymce() {
-      this.$router.push("/to_tinymce");
-    },
-    to_wangeditor() {
-      this.$router.push("/to_wangeditor");
-    },
-    to_map() {
-      this.$router.push("/to_map");
+    to_page(url){
+      this.$router.push(url);
     }
-  },
-  created() {}
+    
+  }
 };
 </script>
 
 <style scoped>
-
 header {
   text-align: center;
 }

@@ -1,6 +1,5 @@
 <template>
   <div class="app">
-    <el-button type="primary" @click="toDatabase">返回首页</el-button>
     <div>
       <span>二维码地址：</span>
       <el-input v-model="address" placeholder="请输入地址" style="width:200px"></el-input>

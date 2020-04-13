@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div id="app">
-      <el-button type="primary" @click="toDatabase">返回首页</el-button>
-    </div>
     <p>当前时间：</p>
     <h1>{{ year }}&nbsp;{{nowWeek}}&nbsp;{{Time}}</h1>
     <h1>{{nowTime | formatDate}}</h1>

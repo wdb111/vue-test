@@ -1,9 +1,5 @@
 <template>
   <div>
-    <div id="app">
-      <el-button type="primary" @click="toDatabase">返回首页</el-button>
-    </div>
-
     <h3>
       通过 npm install --save codemirror 下载；然后在组件中直接引用；
       <br />通过 import "codemirror/theme/idea.css"和theme: 'idea'（名字一样）来设置高亮主题

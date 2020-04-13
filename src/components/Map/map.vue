@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div id="app">
-      <el-button type="primary" @click="toDatabase">返回首页</el-button>
-    </div>
+    
     <h1>地图</h1>
     <my-plugin :propData='initData'></my-plugin>
   </div>
