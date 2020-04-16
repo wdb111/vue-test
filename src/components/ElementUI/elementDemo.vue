@@ -1,7 +1,15 @@
 <template>
   <div>
+    <div id="app">
+      <el-button type="primary" @click="toDatabase">返回首页</el-button>
+    </div>
     <div class="hello">
-    <el-button class="button" type="primary" v-for="(item,index) in dataList" :key="index" @click="to_page(item.url)">{{item.title}}</el-button>
+    <el-button class="button" type="primary" @click="to_table">表格</el-button>
+    <el-button class="button" type="primary" @click="to_input">输入框</el-button>
+    <el-button class="button" type="primary" @click="to_collapse ">折叠面板</el-button>
+    <el-button class="button" type="primary" @click="to_navmenu ">导航菜单</el-button>
+    <el-button class="button" type="primary" @click="to_upload ">上传</el-button>
+    <el-button class="button" type="primary" @click="to_cascader ">级联选择</el-button>
   </div>
     <router-view></router-view>
   </div>
@@ -11,42 +19,30 @@ export default {
   
   data() {
     return {
-      dataList:[
-        {
-          title:"表格",
-          url:"/el-table"
-        },
-        {
-          title:"输入框",
-          url:"/el-input"
-        },
-        {
-          title:"折叠面板",
-          url:"/el-collapse"
-        },
-        {
-          title:"导航菜单",
-          url:"/el-navmenu"
-        },
-        {
-          title:"上传",
-          url:"/el-upload"
-        },
-        {
-          title:"级联选择",
-          url:"/el-cascader"
-        },
-        {
-          title:"步骤条",
-          url:"/el-steps"
-        }
-      ]
     };
   },
   methods: {
-    to_page(url) {
-      this.$router.push("/to_element"+url);
-    }
+    toDatabase() {
+      this.$router.push("/");
+    },
+     to_table() {
+      this.$router.push("/to_element/el-table");
+    },
+     to_input() {
+      this.$router.push("/to_element/el-input");
+    },
+     to_collapse() {
+      this.$router.push("/to_element/el-collapse");
+    },
+    to_navmenu() {
+      this.$router.push("/to_element/el-navmenu");
+    },
+    to_upload() {
+      this.$router.push("/to_element/el-upload");
+    },
+    to_cascader() {
+      this.$router.push("/to_element/el-cascader");
+    },
   },
 };
 </script>
