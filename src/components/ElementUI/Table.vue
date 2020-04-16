@@ -17,6 +17,7 @@
     </el-table>
     <div>合并列</div>
     <el-table
+    height="200px"
       :data="tableData1"
       :span-method="objectSpanMethod"
       border
