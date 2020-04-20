@@ -82,7 +82,6 @@ export default new Router({
           name: 'element',
           component: element,
           children: [
-
             {
               path: 'el-steps',
               name: 'Steps',
@@ -120,6 +119,16 @@ export default new Router({
             },
           ]
         },
+        {
+          path:"/to_iview",
+          component:()=>import("@/components/iView"),
+          children:[
+            {
+              path:"nav",
+              component:()=>import("@/components/iView/Nav.vue")
+            }
+          ]
+        }
       ]
     },
 

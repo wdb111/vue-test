@@ -6,6 +6,10 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import myPlugin from "wdb-npm-practice";
+import ViewUI from 'view-design';
+import 'view-design/dist/styles/iview.css';
+
+Vue.use(ViewUI);
 
 Vue.use(myPlugin);
 Vue.use(ElementUI);
