@@ -1,37 +1,53 @@
 <template>
   <div>
-    <el-checkbox
-      :indeterminate="isIndeterminate"
-      v-model="checkAll"
-      @change="handleCheckAllChange"
-    >全选</el-checkbox>
-    <div style="margin: 15px 0;"></div>
-    <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
-      <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
-    </el-checkbox-group>
+    <div>
+      <p>FullName: {{fullName}}</p>
+      <p>
+        FirstName:
+        <input type="text" v-model="firstName" />
+      </p>
+    </div>
+    <div>
+      <p>obj.a: {{obj.a}}</p>
+      <p>
+        obj.a:
+        <input type="text" v-model="obj.a" />
+      </p>
+    </div>
   </div>
 </template>
 <script>
-const cityOptions = ["上海", "北京", "广州", "深圳"];
 export default {
   data() {
     return {
-      checkAll: false,
-      checkedCities: ["上海", "北京"],
-      cities: cityOptions,
-      isIndeterminate: true
+      firstName: "Dawei",
+      lastName: "Lou",
+      fullName: "",
+      obj: {
+        a: 123
+      }
     };
   },
-  methods: {
-    handleCheckAllChange(val) {
-      this.checkedCities = val ? cityOptions : [];
-      this.isIndeterminate = false;
+  methods: {},
+  mounted() {
+    this.obj = {
+      a: "456"
+    };
+  },
+  watch: {
+    firstName: {
+      handler(newName, oldName) {
+        this.fullName = newName + " " + this.lastName;
+      },
+      // 代表在wacth里声明了firstName这个方法之后立即先去执行handler方法
+      immediate: true
     },
-    handleCheckedCitiesChange(value) {
-      let checkedCount = value.length;
-      this.checkAll = checkedCount === this.cities.length;
-      this.isIndeterminate =
-        checkedCount > 0 && checkedCount < this.cities.length;
+    obj: {
+      handler(newName, oldName) {
+        console.log("obj.a changed");
+      },
+      immediate: true,
+      deep: true//代表是否深度监听
     }
   }
 };

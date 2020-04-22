@@ -26,7 +26,7 @@ export default {
         },
         {
           title:"导航菜单",
-          url:"el-navmenu"
+          url:"el-navmenu/1"
         },
         {
           title:"上传",
@@ -50,14 +50,6 @@ export default {
 <style>
 </style>
 <style scoped>
-#app {
-  text-align: center;
-  margin-top: 30px;
-}
-.hello {
-  margin-top: 20px;
-  text-align: center;
-}
 .button {
   margin-top: 20px;
 }
