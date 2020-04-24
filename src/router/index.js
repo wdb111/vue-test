@@ -17,13 +17,14 @@ import elupload from '@/components/ElementUI/Upload'
 import elcascader from '@/components/ElementUI/Cascader'
 import tinymce from '@/components/Tinymce/Tinymce'
 import wangeditor from '@/components/Wangeditor/index'
-import Steps from "@/components/ElementUI/Steps"
+// import Steps from "@/components/ElementUI/Steps"
+// const Steps = () => import('@/components/ElementUI/Steps');
+const Steps = resolve => require(['@/components/ElementUI/Steps'], resolve);
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'index',
       component: index,
@@ -81,8 +82,7 @@ export default new Router({
           path: '/to_element',
           name: 'element',
           component: element,
-          children: [
-            {
+          children: [{
               path: 'el-steps',
               name: 'Steps',
               component: Steps
@@ -106,63 +106,67 @@ export default new Router({
               path: 'el-navmenu',
               name: 'elnavmenu',
               component: elnavmenu,
-              children:[
-                {
-                  id:'1',
+              children: [{
+                  id: '1',
                   path: '1',
                   name: 'public',
-                  component: ()=>import('@/components/ElementUI/publicPage'),
-                  meta:{
-                    title:"首页"
+                  //路由懒加载，Vue 只有在这个组件需要被渲染的时候才会触发该工厂函数，且会把结果缓存起来供未来重渲染
+                  //下面两种写法都可以
+                  // component: ()=>import('@/components/ElementUI/publicPage'),
+                  component(resolve) {
+                    require(['@/components/ElementUI/publicPage'], resolve)
+                  },
+                  meta: {
+                    title: "首页"
                   },
                 },
                 {
-                  id:'1',
+                  id: '1',
                   path: '10',
                   name: 'public',
-                  component: ()=>import('@/components/ElementUI/publicPage'),
-                  meta:{
-                    title:"表格"
+                  component: () => import('@/components/ElementUI/publicPage'),
+                  meta: {
+                    title: "表格"
                   },
                 },
                 {
-                  id:"2",
+                  id: "2",
                   path: '2',
                   name: 'public',
-                  component: ()=>import('@/components/ElementUI/publicPage'),
-                  meta:{
-                    title:"第二页"
+                  component: () => import('@/components/ElementUI/publicPage'),
+                  meta: {
+                    title: "第二页"
                   },
                 },
                 {
-                  id:"3",
+                  id: "3",
                   path: '3',
                   name: 'public',
-                  component: ()=>import('@/components/ElementUI/publicPage'),
-                  meta:{
-                    title:"第三页"
+                  component: () => import('@/components/ElementUI/publicPage'),
+                  meta: {
+                    title: "第三页"
                   },
                 },
                 {
-                  id:"4",
+                  id: "4",
                   path: '4',
                   name: 'public',
-                  component: ()=>import('@/components/ElementUI/publicPage'),
-                  meta:{
-                    title:"第四页"
+                  component: () => import('@/components/ElementUI/publicPage'),
+                  meta: {
+                    title: "第四页"
                   },
                 },
                 {
-                  id:"5",
+                  id: "5",
                   path: '5',
                   name: 'public',
-                  component: ()=>import('@/components/ElementUI/publicPage'),
-                  meta:{
-                    title:"第五页"
+                  component: () => import('@/components/ElementUI/publicPage'),
+                  meta: {
+                    title: "第五页"
                   },
                 },
               ]
-              
+
             },
             {
               path: 'el-upload',
@@ -174,18 +178,16 @@ export default new Router({
               name: 'elcascader',
               component: elcascader
             },
-            
+
           ]
         },
         {
-          path:"/to_iview",
-          component:()=>import("@/components/iView"),
-          children:[
-            {
-              path:"nav",
-              component:()=>import("@/components/iView/Nav.vue")
-            }
-          ]
+          path: "/to_iview",
+          component: () => import("@/components/iView"),
+          children: [{
+            path: "nav",
+            component: () => import("@/components/iView/Nav.vue")
+          }]
         }
       ]
     },
