@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <el-aside class="aside" :width="isCollapse?'70px':'201px'">
+      <div class="logo">Logo</div>
       <el-menu
         :collapse="isCollapse"
         router
@@ -42,19 +43,25 @@
     </el-aside>
     <div class="right">
       <div style="width:100%">
-        <i
-          :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
-          @click="isCollapse=!isCollapse"
-        ></i>
-        <span class="leables" :class=" $route.path=== '/to_element/el-navmenu/1' ? 'active' : ''">
-          <router-link to="/to_element/el-navmenu/1">首页</router-link>
-        </span>
-        <Leables
-          v-for="(item,index) in tableList"
-          :key="index"
-          :names="item"
-          @removeTable="removeTable"
-        />
+        <header>
+          <i
+            :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
+            @click="isCollapse=!isCollapse"
+          ></i>
+          <span style="font-size:30px">Header</span>
+        </header>
+        <div>
+          <span class="leables" :class=" $route.path=== '/to_element/el-navmenu/1' ? 'active' : ''">
+            <router-link to="/to_element/el-navmenu/1">首页</router-link>
+          </span>
+          <Leables
+            v-for="(item,index) in tableList"
+            :key="index"
+            :names="item"
+            @removeTable="removeTable"
+          />
+        </div>
+
         <router-view></router-view>
       </div>
     </div>
@@ -123,6 +130,9 @@ export default {
 }
 </style>
 <style scoped>
+.logo {
+  text-align: center;
+}
 .aside {
   transition: all 0.4s;
 }

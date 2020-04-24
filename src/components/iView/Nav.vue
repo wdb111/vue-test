@@ -13,21 +13,9 @@
         <Menu width="auto" :class="menuitemClasses" accordion theme="light">
           <Submenu name="1">
             <template slot="title">
-              <Icon type="ios-paper" />
-              <span>内容管理</span>
+              <Icon type="ios-paper" />内容管理
             </template>
-            <MenuItem name="1-1">
-              <span>文章管理</span>
-              <Icon type="ios-arrow-forward" />
-            </MenuItem>
-            <MenuItem name="1-2">
-              <span>评论管理</span>
-              <Icon type="ios-arrow-forward" />
-            </MenuItem>
-            <MenuItem name="1-3">
-              <span>举报管理</span>
-              <Icon type="ios-arrow-forward" />
-            </MenuItem>
+            <MenuItem name="1-1">文章管理</MenuItem>
           </Submenu>
           <Submenu name="2">
             <template slot="title">
