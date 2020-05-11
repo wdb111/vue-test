@@ -188,6 +188,10 @@ export default new Router({
             path: "nav",
             component: () => import("@/components/iView/Nav.vue")
           }]
+        },
+        {
+          path:"/identify",
+          component:()=>import("@/components/Identify")
         }
       ]
     },

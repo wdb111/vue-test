@@ -7,6 +7,9 @@
     <div class="box">
       <textarea ref="mycode" class="codesql" v-model="code" style="height:200px;width:600px;"></textarea>
     </div>
+    <div class="box">
+      <textarea ref="mycode1" class="codesql" v-model="code1" style="height:200px;width:600px;"></textarea>
+    </div>
   </div>
 </template>
 <script>
@@ -28,12 +31,26 @@ export default {
     };
   },
   methods: {
-    toDatabase() {
-      this.$router.push("/");
-    }
   },
   mounted() {
     let editor = CodeMirror.fromTextArea(this.$refs.mycode, {
+      mode: "text/x-java", //选择对应代码编辑器的语言，我这边选的是数据库，根据个人情况自行设置即可
+      indentWithTabs: true,
+      smartIndent: true,
+      lineNumbers: true,
+      matchBrackets: true,
+      theme: "idea", //设置主题，不设置的会使用默认主题
+      // autofocus: true,
+      extraKeys: { Ctrl: "autocomplete" }, //自定义快捷键
+      hintOptions: {
+        //自定义提示选项
+        tables: {
+          users: ["name", "score", "birthDate"],
+          countries: ["name", "population", "size"]
+        }
+      }
+    });
+    let editor1 = CodeMirror.fromTextArea(this.$refs.mycode1, {
       mode: "text/x-java", //选择对应代码编辑器的语言，我这边选的是数据库，根据个人情况自行设置即可
       indentWithTabs: true,
       smartIndent: true,
@@ -63,7 +80,10 @@ export default {
   margin-top: 10px;
 }
 .box {
+  display: inline-block;
+  width: 49%;
   margin-top: 20px;
+  border: 1px solid #e5e5e5;
 }
 .codesql {
   font-size: 11pt;

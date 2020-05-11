@@ -1,70 +1,85 @@
 <template>
   <div id="app">
-    <el-table ref="table" :data="tableData">
+    <div>
+      <h1>表格配置</h1>
+      <div>
+        <el-checkbox
+          :indeterminate="isIndeterminate"
+          v-model="checkAll"
+          @change="handleCheckAllChange"
+          style="margin: 15px 0;"
+        >全选</el-checkbox>
+        <el-button @click="save">保存</el-button>
+      </div>
+
+      <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
+        <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+      </el-checkbox-group>
+    </div>
+    <el-table
+      highlight-current-row
+      :show-header="showHeader"
+      :header-cell-style="{background:'#F5F7FA',color:'#606266'}"
+      height="400"
+      :border="border"
+      :stripe="stripe"
+      ref="table"
+      :data="tableData"
+    >
       <el-table-column type="selection"></el-table-column>
+      <el-table-column
+        v-if="filters"
+        key="date1"
+        :sortable="sortable"
+        :filters="[{text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-02', value: '2016-05-02'}]"
+        :filter-method="filterHandler"
+        label="日期"
+        prop="date"
+      ></el-table-column>
+      <el-table-column
+        resizable
+        show-overflow-tooltip
+        v-else
+        key="date2"
+        :sortable="sortable"
+        label="日期"
+        prop="date"
+      ></el-table-column>
+      <el-table-column label="姓名" prop="name"></el-table-column>
+      <el-table-column header-align="center" align="left" label="日期" prop="date"></el-table-column>
+      <el-table-column label="姓名" prop="name"></el-table-column>
       <el-table-column label="日期" prop="date"></el-table-column>
       <el-table-column label="姓名" prop="name"></el-table-column>
-      <el-table-column label="附件">
-        <template slot-scope="props">
-          <el-button type="primary" @click="handleCheck(props.row)">查看附件</el-button>
-        </template>
-      </el-table-column>
-      <el-table-column type="expand">
-        <template slot-scope="props">
-          <div>{{props.row.name}}</div>
+      <el-table-column :fixed="fixed" height="200" key="caozuo" label="操作">
+        <template slot-scope="scope">
+          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
-    <div>合并列</div>
-    <el-table
-    height="200px"
-      :data="tableData1"
-      :span-method="objectSpanMethod"
-      border
-      style="width: 100%; margin-top: 20px"
-    >
-      <el-table-column prop="id" label="ID" width="180"></el-table-column>
-      <el-table-column prop="name" label="姓名"></el-table-column>
-      <el-table-column prop="amount1" label="数值 1（元）"></el-table-column>
-      <el-table-column prop="amount2" label="数值 2（元）"></el-table-column>
-      <el-table-column prop="amount3" label="数值 3（元）"></el-table-column>
-    </el-table>
+
     <h1>根据自己的条件合并列</h1>
     <el-table
-        :data="listData"
-        :span-method="objectSpanMethod1"
-        class="tableArea"
-        style="width: 100%">
-        <el-table-column
-          prop="type"
-          label="序号"
-          align="center"
-          width="200"/>
-        <el-table-column
-          prop="sheetType"
-          label="工单类型"
-          />
-        <el-table-column
-          prop="taskKey"
-          label="taskKey"
-          />
-        <el-table-column
-          prop="templateUrl"
-          label="templateUrl"
-          />
-        <el-table-column
-          label="操作"
-          >
-          <template slot-scope="scope">
-          	<el-tooltip class="item" effect="dark" content="修改" placement="top-start">
-				      <i class="el-icon-edit-outline"  @click="modify(scope)" />
-				    </el-tooltip>
-				    <el-tooltip class="item" effect="dark" content="删除" placement="top-start">
+      :data="listData"
+      :span-method="objectSpanMethod1"
+      class="tableArea"
+      style="width: 100%"
+    >
+      <el-table-column prop="type" label="序号" align="center" width="200" />
+      <el-table-column prop="sheetType" label="工单类型" />
+      <el-table-column prop="taskKey" label="taskKey" />
+      <el-table-column prop="templateUrl" label="templateUrl" />
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-tooltip class="item" effect="dark" content="修改" placement="top-start">
+            <i class="el-icon-edit-outline" @click="modify(scope)" />
+          </el-tooltip>
+          <el-tooltip class="item" effect="dark" content="删除" placement="top-start">
             <i class="el-icon-delete" @click="deleteData(scope)" />
-				    </el-tooltip>
-          </template>
-        </el-table-column >
-      </el-table>
+          </el-tooltip>
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 <script>
@@ -86,6 +101,16 @@ export default {
   },
   data() {
     return {
+      showHeader: true,
+      filters: false,
+      fixed: false,
+      stripe: false,
+      border: false,
+      sortable: false,
+      checkAll: false,
+      checkedCities: ["显示表头"],
+      cities: ["显示表头", "斑马纹", "边框", "固定操作列", "排序", "筛选"],
+      isIndeterminate: true,
       rowList: [],
       spanArr: [],
       position: 0,
@@ -106,139 +131,164 @@ export default {
           city: "普陀区",
           address: "上海市普陀区金沙江路 1518 弄",
           zip: 200333
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          province: "上海",
+          city: "普陀区",
+          address: "上海市普陀区金沙江路 1518 弄",
+          zip: 200333
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          province: "上海",
+          city: "普陀区",
+          address: "上海市普陀区金沙江路 1518 弄",
+          zip: 200333
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          province: "上海",
+          city: "普陀区",
+          address: "上海市普陀区金沙江路 1518 弄",
+          zip: 200333
         }
-      ],
-      tableData1: [{
-          id: '12987122',
-          name: '王小虎',
-          amount1: '234',
-          amount2: '3.2',
-          amount3: 10
-        }, {
-          id: '12987123',
-          name: '王小虎',
-          amount1: '165',
-          amount2: '4.43',
-          amount3: 12
-        }, {
-          id: '12987124',
-          name: '王小虎',
-          amount1: '324',
-          amount2: '1.9',
-          amount3: 9
-        }, {
-          id: '12987125',
-          name: '王小虎',
-          amount1: '621',
-          amount2: '2.2',
-          amount3: 17
-        }, {
-          id: '12987126',
-          name: '王小虎',
-          amount1: '539',
-          amount2: '4.1',
-          amount3: 15
-        }]
+      ]
     };
   },
   methods: {
-  	queryData(){//查询操作
-  		this.listData = [
-  			{
-        	id:1,
-          type:1,
+    filterHandler(value, row, column) {
+      const property = column["property"];
+      return row[property] === value;
+    },
+    handleCheckAllChange(val) {
+      this.checkedCities = val ? this.cities : [];
+      this.isIndeterminate = false;
+    },
+    handleCheckedCitiesChange(value) {
+      this.checkedCities = value;
+      let checkedCount = value.length;
+      this.checkAll = checkedCount === this.cities.length;
+      this.isIndeterminate =
+        checkedCount > 0 && checkedCount < this.cities.length;
+    },
+    save() {
+      this.showHeader = false;
+      this.stripe = false;
+      this.border = false;
+      this.fixed = false;
+      this.sortable = false;
+      this.filters = false;
+      let _this = this;
+      this.checkedCities.forEach(item => {
+        switch (item) {
+          case "斑马纹":
+            _this.stripe = true;
+            break;
+          case "边框":
+            _this.border = true;
+            break;
+          case "固定操作列":
+            _this.fixed = "right";
+            break;
+          case "排序":
+            _this.sortable = true;
+            break;
+          case "筛选":
+            _this.filters = true;
+            break;
+          case "显示表头":
+            _this.showHeader = true;
+            break;
+        }
+      });
+    },
+    queryData() {
+      //查询操作
+      this.listData = [
+        {
+          id: 1,
+          type: 1,
           sheetType: "事件单",
           taskKey: "shijian_01",
           templateUrl: "/shijian_01"
         },
         {
-        	id:2,
-          type:1,
+          id: 2,
+          type: 1,
           sheetType: "事件单",
           taskKey: "shijian_02",
           templateUrl: "/shijian_02"
         },
         {
-        	id:3,
-          type:1,
+          id: 3,
+          type: 1,
           sheetType: "事件单",
           taskKey: "shijian_03",
           templateUrl: "/shijian_04"
         },
         {
-        	id:4,
-          type:2,
+          id: 4,
+          type: 2,
           sheetType: "问题单",
           taskKey: "wenti_01",
           templateUrl: "/wenti_01"
         },
         {
-        	id:5,
-          type:2,
+          id: 5,
+          type: 2,
           sheetType: "问题单",
           taskKey: "wenti_02",
           templateUrl: "/wenti_02"
         },
         {
-        	id:6,
-          type:2,
+          id: 6,
+          type: 2,
           sheetType: "问题单",
           taskKey: "wenti_03",
           templateUrl: "/wenti_03"
         }
-  		];
-		  this.rowspan()
-  	},
-  	rowspan() {
-  		this.listData.forEach((item,index) => {
-	    	if( index === 0){
-	    		this.spanArr.push(1);
-	    		this.position = 0;
-	    	}else{
-	    		if(this.listData[index].type === this.listData[index-1].type ){
-	    			this.spanArr[this.position] += 1;
-	    			this.spanArr.push(0);
-	    		}else{
-	    			this.spanArr.push(1);
-	    			this.position = index;
-	    		}
-	    	}
-	    })
-  	},
-    objectSpanMethod1({ row, column, rowIndex, columnIndex }) {  //表格合并行
-    	if (columnIndex === 0) {
-    		const _row = this.spanArr[rowIndex];
-    		const _col = _row>0 ? 1 : 0;
-    		return {
-    			rowspan: _row,
-    			colspan: _col
-    		}
-    	}
-    	if(columnIndex === 1){
-    		const _row = this.spanArr[rowIndex];
-    		const _col = _row>0 ? 1 : 0;
-    		return {
-    			rowspan: _row,
-    			colspan: _col
-    		}
-    	}
+      ];
+      this.rowspan();
     },
-     objectSpanMethod({ row, column, rowIndex, columnIndex }) {
-      //  console.log(row,column, rowIndex, columnIndex)
-        if (columnIndex === 0) {
-          if (rowIndex % 2 === 0) {
-            return {
-              rowspan: 2,
-              colspan: 1
-            };
+    rowspan() {
+      this.listData.forEach((item, index) => {
+        if (index === 0) {
+          this.spanArr.push(1);
+          this.position = 0;
+        } else {
+          if (this.listData[index].type === this.listData[index - 1].type) {
+            this.spanArr[this.position] += 1;
+            this.spanArr.push(0);
           } else {
-            return {
-              rowspan: 0,
-              colspan: 0
-            };
+            this.spanArr.push(1);
+            this.position = index;
           }
         }
-      },
+      });
+    },
+    objectSpanMethod1({ row, column, rowIndex, columnIndex }) {
+      //表格合并行
+      if (columnIndex === 0) {
+        const _row = this.spanArr[rowIndex];
+        const _col = _row > 0 ? 1 : 0;
+        return {
+          rowspan: _row,
+          colspan: _col
+        };
+      }
+      if (columnIndex === 1) {
+        const _row = this.spanArr[rowIndex];
+        const _col = _row > 0 ? 1 : 0;
+        return {
+          rowspan: _row,
+          colspan: _col
+        };
+      }
+    },
     handleCheck(row) {
       const $table = this.$refs.table;
       $table.toggleRowExpansion(row);
@@ -276,11 +326,10 @@ i[class^="el-icon"] {
   font-size: 16px;
   cursor: pointer;
 }
-.modify_table td{
-		padding: 10px ;
-	
+.modify_table td {
+  padding: 10px;
 }
-.item_title{
-	text-align: right;	
+.item_title {
+  text-align: right;
 }
 </style>

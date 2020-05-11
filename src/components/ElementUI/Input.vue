@@ -1,18 +1,23 @@
 <template>
   <div>
+    <h1>watch高级应用</h1>
     <div>
       <p>FullName: {{fullName}}</p>
       <p>
         FirstName:
-        <input type="text" v-model="firstName" />
+        <el-input style="width:200px" type="text" v-model="firstName" />
       </p>
     </div>
     <div>
       <p>obj.a: {{obj.a}}</p>
       <p>
         obj.a:
-        <input type="text" v-model="obj.a" />
+        <el-input style="width:200px" type="text" v-model="obj.a" />
       </p>
+    </div>
+    <div>
+      <el-button @click="focuse">点击聚焦</el-button>
+      <el-input class="aaa" style="width:200px" v-model="msg" placeholder="请输入..."></el-input>
     </div>
   </div>
 </template>
@@ -20,6 +25,7 @@
 export default {
   data() {
     return {
+      msg:"",
       firstName: "Dawei",
       lastName: "Lou",
       fullName: "",
@@ -28,7 +34,13 @@ export default {
       }
     };
   },
-  methods: {},
+  methods: {
+    focuse(){
+            let a=document.getElementsByClassName("aaa")[0];
+            let b=a.getElementsByTagName("input")[0];
+            b.focus();
+    }
+  },
   mounted() {
     this.obj = {
       a: "456"
@@ -47,7 +59,7 @@ export default {
         console.log("obj.a changed");
       },
       immediate: true,
-      deep: true//代表是否深度监听
+      deep: true //代表是否深度监听
     }
   }
 };

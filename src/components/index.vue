@@ -58,6 +58,10 @@ export default {
           url:"/to_wangeditor"
         },
         {
+          name:"验证码",
+          url:"/identify"
+        },
+        {
           name:"地图",
           url:"/to_map"
         }
