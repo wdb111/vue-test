@@ -1,37 +1,65 @@
 <template>
   <div>
-    <el-checkbox
-      :indeterminate="isIndeterminate"
-      v-model="checkAll"
-      @change="handleCheckAllChange"
-    >全选</el-checkbox>
-    <div style="margin: 15px 0;"></div>
-    <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
-      <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
-    </el-checkbox-group>
+    <h1>watch高级应用</h1>
+    <div>
+      <p>FullName: {{fullName}}</p>
+      <p>
+        FirstName:
+        <el-input style="width:200px" type="text" v-model="firstName" />
+      </p>
+    </div>
+    <div>
+      <p>obj.a: {{obj.a}}</p>
+      <p>
+        obj.a:
+        <el-input style="width:200px" type="text" v-model="obj.a" />
+      </p>
+    </div>
+    <div>
+      <el-button @click="focuse">点击聚焦</el-button>
+      <el-input class="aaa" style="width:200px" v-model="msg" placeholder="请输入..."></el-input>
+    </div>
   </div>
 </template>
 <script>
-const cityOptions = ["上海", "北京", "广州", "深圳"];
 export default {
   data() {
     return {
-      checkAll: false,
-      checkedCities: ["上海", "北京"],
-      cities: cityOptions,
-      isIndeterminate: true
+      msg:"",
+      firstName: "Dawei",
+      lastName: "Lou",
+      fullName: "",
+      obj: {
+        a: 123
+      }
     };
   },
   methods: {
-    handleCheckAllChange(val) {
-      this.checkedCities = val ? cityOptions : [];
-      this.isIndeterminate = false;
+    focuse(){
+            let a=document.getElementsByClassName("aaa")[0];
+            let b=a.getElementsByTagName("input")[0];
+            b.focus();
+    }
+  },
+  mounted() {
+    this.obj = {
+      a: "456"
+    };
+  },
+  watch: {
+    firstName: {
+      handler(newName, oldName) {
+        this.fullName = newName + " " + this.lastName;
+      },
+      // 代表在wacth里声明了firstName这个方法之后立即先去执行handler方法
+      immediate: true
     },
-    handleCheckedCitiesChange(value) {
-      let checkedCount = value.length;
-      this.checkAll = checkedCount === this.cities.length;
-      this.isIndeterminate =
-        checkedCount > 0 && checkedCount < this.cities.length;
+    obj: {
+      handler(newName, oldName) {
+        console.log("obj.a changed");
+      },
+      immediate: true,
+      deep: true //代表是否深度监听
     }
   }
 };

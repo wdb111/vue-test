@@ -24,7 +24,10 @@ export default {
         },
         {
           name:"elementUI例子",
-          url:"/to_element"
+          url:"/to_element/el-table"
+        },{
+          name:"iView例子",
+          url:"/to_iview/nav"
         },
         {
           name:"代码高亮编辑器",
@@ -53,6 +56,10 @@ export default {
         {
           name:"wangeditor富文本编辑器",
           url:"/to_wangeditor"
+        },
+        {
+          name:"验证码",
+          url:"/identify"
         },
         {
           name:"地图",
