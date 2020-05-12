@@ -57,6 +57,10 @@ export default {
         {
           name:"地图",
           url:"/to_map"
+        },
+        {
+          name:"制作渐变尖角",
+          url:"/to_jiao"
         }
       ]
     };

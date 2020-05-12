@@ -4,11 +4,15 @@
     </div>
 </template>
 <script>
+import _ from "lodash";
 export default {
     data () {
         return {
             
         }
+    },
+    created () {
+        console.log(_.now())
     }
 }
 </script>

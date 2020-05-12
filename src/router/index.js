@@ -22,12 +22,15 @@ import Steps from "@/components/ElementUI/Steps"
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'index',
       component: index,
       children: [{
+          path: "/to_jiao",
+          component: () => import("@/components/Jiao")
+        },
+        {
           path: '/to_database',
           name: 'database',
           component: database
