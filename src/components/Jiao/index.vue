@@ -11,15 +11,23 @@
 -->
 <template>
   <div class="jiao">
-    <h1>尖角</h1>
+    <h1>尖角、选择前、选择时、选择后，三种颜色变化</h1>
     <div class="box">
       <template v-for="(item,index) in dataList">
-        <div :key="index" class="box1" :class="{box1active:current===index}" @click="select(index)">
-          <i :class="item.icon"></i> {{item.title}}
-          <div class="box2"></div>
-          <div class="box3">
-            <div :class="[item.actived?'light':'box4']"></div>
-          </div>
+        <div
+          :key="index"
+          :class="[item.actived?'box-light':'box1']"
+          :style="{backgroundImage:itemImage(index)}"
+          @click="select(index)"
+        >
+          <i :class="item.icon"></i>
+          {{item.title}}
+          <div class="box2" :style="{backgroundImage:itemImage(index)}"></div>
+          <div
+            :class="[item.actived?'point-light':'box3']"
+            :style="{width:itemwidth(index)+'px',height:itemwidth(index)+'px',left:itemleft(index)+'px',backgroundColor:itemcolor(index)}"
+          ></div>
+          <div :class="[item.actived?'light':'box4']"></div>
         </div>
       </template>
     </div>
@@ -29,8 +37,6 @@
 <script>
 export default {
   name: "Jiao",
-  props: {},
-  components: {},
   data() {
     return {
       current: 0,
@@ -38,52 +44,89 @@ export default {
         {
           title: "标题1",
           actived: true,
-          icon:"iconfont iconshichanshenqingliucheng"
+          icon: "iconfont iconshichanshenqingliucheng"
         },
         {
           title: "标题2",
           actived: false,
-          icon:"iconfont iconwupinfanghangshenqingliucheng"
+          icon: "iconfont iconwupinfanghangshenqingliucheng"
         },
         {
           title: "标题3",
           actived: false,
-          icon:"iconfont iconwakuangzhongxinzhidushenpiliucheng"
+          icon: "iconfont iconwakuangzhongxinzhidushenpiliucheng"
         },
         {
           title: "标题4",
           actived: false,
-          icon:"iconfont icongaizhangshenqingliucheng-feihetongleizhizaojiaofu"
+          icon: "iconfont icongaizhangshenqingliucheng-feihetongleizhizaojiaofu"
         },
         {
           title: "标题5",
           actived: false,
-          icon:"iconfont iconsystem_line1"
+          icon: "iconfont iconsystem_line1"
         },
         {
           title: "标题6",
           actived: false,
-          icon:"iconfont iconcustomer_list_line1"
+          icon: "iconfont iconcustomer_list_line1"
         },
         {
           title: "标题7",
           actived: false,
-          icon:"iconfont iconcontract_filed_line1"
+          icon: "iconfont iconcontract_filed_line1"
         },
         {
           title: "标题8",
           actived: false,
-          icon:"iconfont iconinvoice_statistics_line"
+          icon: "iconfont iconinvoice_statistics_line"
         },
         {
           title: "标题9",
           actived: false,
-          icon:"iconfont iconuserinfo-anquan"
+          icon: "iconfont iconuserinfo-anquan"
         }
       ]
     };
   },
-  computed: {},
+  computed: {
+    itemwidth() {
+      return function(index) {
+        if (this.current === index) {
+          return 14;
+        } else {
+          return 12;
+        }
+      };
+    },
+    itemleft() {
+      return function(index) {
+        if (this.current === index) {
+          return -41;
+        } else {
+          return -40;
+        }
+      };
+    },
+    itemcolor() {
+      return function(index) {
+        if (this.current === index) {
+          return "#4fd3e1";
+        } else {
+          return "#239AD6";
+        }
+      };
+    },
+    itemImage() {
+      return function(index) {
+        if (this.current === index) {
+          return "linear-gradient(#4fd3e1, #1d71a3)";
+        } else {
+          return "none";
+        }
+      };
+    }
+  },
   methods: {
     select(index) {
       this.current = index;
@@ -114,74 +157,79 @@ export default {
   cursor: pointer;
   border-radius: 4px;
   background-color: gainsboro;
+}
+.box-light {
+  margin-top: 20px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: rgb(13, 182, 36);
   .box2 {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 15px;
-    left: -20px;
-    background-color: gainsboro;
+    background-color: rgb(13, 182, 36);
   }
-  .box2::after {
-    content: "";
-    width: 0;
-    height: 0;
-    right: 0;
-    border-top: 10px solid #2d2d2d;
-    border-bottom: 10px solid #2d2d2d;
-    border-left: 15px solid #2d2d2d;
-    border-right: 10px solid transparent;
-    position: absolute;
-  }
-  .box3 {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    top: 20px;
-    left: -40px;
-    border-radius: 50%;
-    background-color: #114f78;
-  }
+}
+.box2 {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 15px;
+  left: -20px;
+  background-color: gainsboro;
+}
+.box2::after {
+  content: "";
+  width: 0;
+  height: 0;
+  right: 0;
+  border-top: 10px solid #2d2d2d;
+  border-bottom: 10px solid #2d2d2d;
+  border-left: 15px solid #2d2d2d;
+  border-right: 10px solid transparent;
+  position: absolute;
+}
+.box3 {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 20px;
+  left: -40px;
+  border-radius: 50%;
+  background-color: #114f78;
+}
+.point-light {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 20px;
+  left: -40px;
+  z-index: 10;
+  border-radius: 50%;
+  background-color: #239ad6;
 }
 .box4 {
   position: absolute;
-  top: -58px;
-  left: 5px;
+  top: -38px;
+  left: -35px;
   width: 2px;
   height: 58px;
   background-color: #114f78;
 }
 .light {
   position: absolute;
-  top: -58px;
-  left: 5px;
+  top: -38px;
+  left: -35px;
   width: 2px;
   height: 58px;
-  background-color: #239AD6;
+  background-color: #239ad6;
 }
-.box1active {
-  background-image: linear-gradient(#4fd3e1, #1d71a3);
-  .box2 {
-    background-image: linear-gradient(#40b6cf, #2b8db5);
-  }
-  .box3 {
-    width: 14px;
-    height: 14px;
-    left: -41px;
-    z-index: 10;
-    background-color: #4fd3e1;
-    .light {
-      left: 6px;
-    }
-  }
-}
-
 .box > div:first-child {
-  .box3 {
-    .light {
-      width: 0px;
-      height: 0px;
-    }
+  .light {
+    width: 0px;
+    height: 0px;
   }
 }
 </style>

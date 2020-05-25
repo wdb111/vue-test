@@ -191,7 +191,16 @@ export default new Router({
           children: [{
             path: "nav",
             component: () => import("@/components/iView/Nav.vue")
-          }]
+          }
+        ,{
+          path:"modal",
+          component:()=>import("@/components/iView/modal.vue")
+        },
+      {
+        path:"tree",
+        name:"tree",
+        component:()=>import("@/components/iView/Tree.vue")
+      }]
         },
         {
           path:"/identify",

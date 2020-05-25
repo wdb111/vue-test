@@ -16,6 +16,14 @@ export default {
                 {
                     title:"导航栏",
                     url:"/nav"
+                },
+                {
+                    title:"弹窗",
+                    url:"/modal"
+                },
+                {
+                    title:"树形结构",
+                    url:"/tree"
                 }
             ]
         }
