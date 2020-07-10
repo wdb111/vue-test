@@ -189,22 +189,27 @@ export default new Router({
           path: "/to_iview",
           component: () => import("@/components/iView"),
           children: [{
-            path: "nav",
-            component: () => import("@/components/iView/Nav.vue")
-          }
-        ,{
-          path:"modal",
-          component:()=>import("@/components/iView/modal.vue")
-        },
-      {
-        path:"tree",
-        name:"tree",
-        component:()=>import("@/components/iView/Tree.vue")
-      }]
+              path: "nav",
+              component: () => import("@/components/iView/Nav.vue")
+            }, {
+              path: "modal",
+              component: () => import("@/components/iView/modal.vue")
+            },
+            {
+              path: "tree",
+              name: "tree",
+              component: () => import("@/components/iView/Tree.vue")
+            },
+            {
+              path:"layout",
+              name:"layout",
+              component:()=>import("@/components/iView/Layout.vue")
+            }
+          ]
         },
         {
-          path:"/identify",
-          component:()=>import("@/components/Identify")
+          path: "/identify",
+          component: () => import("@/components/Identify")
         }
       ]
     },

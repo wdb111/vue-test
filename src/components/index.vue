@@ -62,12 +62,16 @@ export default {
           url:"/identify"
         },
         {
-          name:"地图",
+          name:"自定义组件",
           url:"/to_map"
         },
         {
           name:"制作渐变尖角",
           url:"/to_jiao"
+        },
+        {
+          name:"获取url参数",
+          url:"/to_url"
         }
       ]
     };
