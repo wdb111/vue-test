@@ -1,7 +1,7 @@
 <template>
   <div>
     
-    <h1>地图</h1>
+    <h1>自定义组件</h1>
     <my-plugin :propData='initData'></my-plugin>
   </div>
 </template>

@@ -24,6 +24,10 @@ export default {
                 {
                     title:"树形结构",
                     url:"/tree"
+                },
+                {
+                    title:"layout布局",
+                    url:"/layout"
                 }
             ]
         }
