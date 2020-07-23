@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import index from '@/components/index'
 import database from '@/components/DataBase/database'
 import Erweima from '@/components/QRcode/Erweima'
-import element from '@/components/ElementUI/elementDemo'
+import element from '@/components/ElementUI/index'
 import codemirror from '@/components/CodeMirror/codemirror'
 import backTop from '@/components/BackTop/backTop'
 import less from '@/components/Less/Less'
@@ -205,6 +205,10 @@ export default new Router({
         {
           path:"/identify",
           component:()=>import("@/components/Identify")
+        },
+        {
+          path:"/to_draggable",
+          component:()=>import("@/components/Draggable")
         }
       ]
     },

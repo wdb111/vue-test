@@ -68,6 +68,10 @@ export default {
         {
           name:"制作渐变尖角",
           url:"/to_jiao"
+        },
+        {
+          name:"拖拽",
+          url:"/to_draggable"
         }
       ]
     };

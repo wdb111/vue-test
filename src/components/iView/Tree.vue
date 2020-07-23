@@ -57,44 +57,27 @@ export default {
   },
   computed: {},
   methods: {
+    recursion(data2, newArr) {
+      data2.forEach(b => {
+        if (newArr.includes(b.id)) {
+          b.checked = true;
+        } else {
+          delete b.checked;
+        }
+        if (b.children && b.children.length > 0) {
+          this.recursion(b.children, newArr);
+        }
+      });
+      return data2;
+    },
     checkNode(arr, node) {
       let newArr = [];
       arr.forEach(item => {
         newArr.push(item.id);
       });
-      function fn(data2, newArr) {
-        data2.forEach(b => {
-          if (newArr.includes(b.id)) {
-            b.checked = true;
-          } else {
-            delete b.checked;
-          }
-          if (b.children && b.children.length > 0) {
-            fn(b.children, newArr);
-          }
-        });
-        return data2;
-      }
+
       if (newArr.length > 0) {
-        this.data2 = fn(this.data2, newArr);
-        //   let _this = this;
-        //   if (newArr.length > 0) {
-        //     _this.data2.forEach(b => {
-        //       if (newArr.includes(b.id)) {
-        //         b.checked = true;
-        //       } else {
-        //         delete b.checked;
-        //       }
-        //       if (b.children && b.children.length > 0) {
-        //         b.children.forEach(d => {
-        //           if (newArr.includes(d.id)) {
-        //             d.checked = true;
-        //           } else {
-        //             delete d.checked;
-        //           }
-        //         });
-        //       }
-        //     });
+        this.data2 = this.recursion(this.data2, newArr);
       } else {
         this.data2 = [
           {
@@ -136,10 +119,9 @@ export default {
       }
       sessionStorage.setItem("treeData", JSON.stringify(this.data2));
       sessionStorage.setItem("routerList", JSON.stringify(newArr));
-      //   console.log(newArr, this.data2);
     },
-    checkBtn(val){
-        console.log(val)
+    checkBtn(val) {
+      console.log(val);
     }
   },
   created() {
