@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     // Various Dev Server settings
     // host:"localhost",//只有localhost和127.0.0.1才能访问
-    host: '0.0.0.0', // 真机测试（localhost和ip和http://127.0.0.1都可以访问） can be overwritten by process.env.HOST
+    host: 'localhost', // 真机测试（localhost和ip和http://127.0.0.1都可以访问） can be overwritten by process.env.HOST
     port: 8181, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,

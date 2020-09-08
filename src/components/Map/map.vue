@@ -2,11 +2,11 @@
   <div>
     
     <h1>自定义组件</h1>
-    <my-plugin :propData='initData'></my-plugin>
+    <!-- <my-plugin :propData='initData'></my-plugin> -->
   </div>
 </template>
 <script>
-import myPlugin from "wdb-npm-practice"
+// import myPlugin from "wdb-npm-practice"
 export default {
   data(){
     return{
@@ -14,7 +14,7 @@ initData: 'hello 你好'
     }
   },
   components:{
-myPlugin
+// myPlugin
   },
   methods: {
     toDatabase() {

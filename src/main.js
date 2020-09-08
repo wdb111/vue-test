@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import myPlugin from "wdb-npm-practice";
+// import myPlugin from "wdb-npm-practice";
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import SIdentify from './components/Identify/identify'//验证码
@@ -13,7 +13,7 @@ Vue.use(SIdentify)
 
 Vue.use(ViewUI);
 
-Vue.use(myPlugin);
+// Vue.use(myPlugin);
 Vue.use(ElementUI);
 Vue.config.productionTip = false
 
