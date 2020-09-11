@@ -209,6 +209,10 @@ export default new Router({
         {
           path:"/to_draggable",
           component:()=>import("@/components/Draggable")
+        },
+        {
+          path:"/to_pdf",
+          component:()=>import("@/components/Pdf")
         }
       ]
     },

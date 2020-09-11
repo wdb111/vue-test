@@ -72,6 +72,10 @@ export default {
         {
           name:"拖拽",
           url:"/to_draggable"
+        },
+        {
+          name:"PDF.js",
+          url:"/to_pdf"
         }
       ]
     };
@@ -86,6 +90,7 @@ export default {
 </script>
 
 <style scoped>
+
 header {
   text-align: center;
 }
