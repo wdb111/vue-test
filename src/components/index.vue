@@ -78,6 +78,10 @@ export default {
         {
           name: 'PDF.js',
           url: '/to_pdf'
+        },
+        {
+          name: '全屏',
+          url: '/to_screenfull'
         }
       ]
     }

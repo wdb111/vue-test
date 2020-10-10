@@ -213,6 +213,10 @@ export default new Router({
         {
           path:"/to_pdf",
           component:()=>import("@/components/Pdf")
+        },
+        {
+          path:'/to_screenfull',
+          component:()=>import ('@/components/Screenfull')
         }
       ]
     },
