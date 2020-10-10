@@ -1,6 +1,6 @@
 # my-project
 
-> 我的vue项目，用户测试各种功能及插件
+> vue demo，用户测试各种功能及插件
 
 ## Build Setup
 
