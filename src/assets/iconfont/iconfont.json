@@ -1,0 +1,79 @@
+{
+  "id": "2012534",
+  "name": "一部 铁鞋",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "14718737",
+      "name": "tx-长方形",
+      "font_class": "tx-changfangxing",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "755615",
+      "name": "直角三角形",
+      "font_class": "zhijiao-triangle",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "1646228",
+      "name": "取消",
+      "font_class": "quxiao",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "5387627",
+      "name": "美元",
+      "font_class": "meiyuan",
+      "unicode": "eb1a",
+      "unicode_decimal": 60186
+    },
+    {
+      "icon_id": "14718691",
+      "name": "tx-fill-长方形",
+      "font_class": "tx-fill-changfangxing",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "5327505",
+      "name": "公路",
+      "font_class": "gonglu",
+      "unicode": "e70a",
+      "unicode_decimal": 59146
+    },
+    {
+      "icon_id": "4770726",
+      "name": "导出",
+      "font_class": "daochu1",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "14197971",
+      "name": "查看",
+      "font_class": "icon_list_chakan",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "2815705",
+      "name": "查看",
+      "font_class": "chakan",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "13135318",
+      "name": "导出",
+      "font_class": "daochu",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    }
+  ]
+}

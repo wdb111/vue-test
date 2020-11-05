@@ -82,6 +82,10 @@ export default {
         {
           name: '全屏',
           url: '/to_screenfull'
+        },
+        {
+          name: 'D3.js的使用',
+          url: '/to_d3'
         }
       ]
     }

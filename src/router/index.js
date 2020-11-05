@@ -189,34 +189,46 @@ export default new Router({
           path: "/to_iview",
           component: () => import("@/components/iView"),
           children: [{
-            path: "nav",
-            component: () => import("@/components/iView/Nav.vue")
-          }
-        ,{
-          path:"modal",
-          component:()=>import("@/components/iView/modal.vue")
-        },
-      {
-        path:"tree",
-        name:"tree",
-        component:()=>import("@/components/iView/Tree.vue")
-      }]
-        },
-        {
-          path:"/identify",
-          component:()=>import("@/components/Identify")
-        },
-        {
-          path:"/to_draggable",
-          component:()=>import("@/components/Draggable")
-        },
-        {
-          path:"/to_pdf",
-          component:()=>import("@/components/Pdf")
+              path: "nav",
+              component: () => import("@/components/iView/Nav.vue")
+            }, {
+              path: "modal",
+              component: () => import("@/components/iView/modal.vue")
+            },
+            {
+              path: "layout",
+              component: () => import("@/components/iView/Layout.vue")
+            },
+            {
+              path: "tree",
+              name: "tree",
+              component: () => import("@/components/iView/Tree.vue")
+            },{
+              path:'table',
+              name:'table',
+              component:()=>import('@/components/iView/table.vue')
+            }
+          ]
         },
         {
-          path:'/to_screenfull',
-          component:()=>import ('@/components/Screenfull')
+          path: "/identify",
+          component: () => import("@/components/Identify")
+        },
+        {
+          path: "/to_draggable",
+          component: () => import("@/components/Draggable")
+        },
+        {
+          path: "/to_pdf",
+          component: () => import("@/components/Pdf")
+        },
+        {
+          path: '/to_screenfull',
+          component: () => import('@/components/Screenfull')
+        },
+        {
+          path: '/to_d3',
+          component: () => import('@/components/D3-js')
         }
       ]
     },

@@ -28,6 +28,10 @@ export default {
                 {
                     title:"layout布局",
                     url:"/layout"
+                },
+                {
+                    title:"自定义表格",
+                    url:'/table'
                 }
             ]
         }
