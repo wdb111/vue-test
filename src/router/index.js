@@ -229,6 +229,22 @@ export default new Router({
         {
           path: '/to_d3',
           component: () => import('@/components/D3-js')
+        },
+        {
+          path:'/to_audio',
+          component:()=>import('@/components/Audio')
+        },
+        {
+          path:'/to_custom_style',
+          component:()=>import('@/components/CustomStyle')
+        },
+        {
+          path:'/to_excel',
+          component:()=>import('@/components/ExportExcel')
+        },
+        {
+          path:'/to_echarts',
+          component:()=>import('@/components/Echarts')
         }
       ]
     },

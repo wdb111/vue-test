@@ -17,7 +17,7 @@ export default {
     return {
       dataList: [
         {
-          name: '操作数据库',
+          name: '操作mongoDB数据库',
           url: '/to_database'
         },
         {
@@ -86,6 +86,22 @@ export default {
         {
           name: 'D3.js的使用',
           url: '/to_d3'
+        },
+        {
+          name:"语音播报",
+          url:'/to_audio'
+        },
+        {
+          name:'单选框自定义样式',
+          url:'/to_custom_style'
+        },
+        {
+          name:'导出Excel表格',
+          url:'/to_excel'
+        },
+        {
+          name:'Echarts图表',
+          url:'/to_echarts'
         }
       ]
     }

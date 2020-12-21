@@ -9,7 +9,7 @@
     <h3>说明</h3>
     <p>访问本地pdf时，请将文件放置static文件夹下面，否则无法访问</p>
     <p>如要禁用按钮，在路劲后加上#toolbar=0</p>
-    <iframe id="ifa" ref="canvas" width="100%" height="100%" src="static/Git.pdf#toolbar=0" frameborder="0" ></iframe>
+    <iframe id="ifa" ref="canvas" width="100%" height="100%" src="static/Git.pdf" frameborder="0" ></iframe>
   </div>
 </template>
 

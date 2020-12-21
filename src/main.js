@@ -9,6 +9,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import SIdentify from './components/Identify/identify'//验证码
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 Vue.use(SIdentify)
 
 Vue.use(ViewUI);
