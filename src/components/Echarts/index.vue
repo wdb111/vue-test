@@ -12,16 +12,20 @@
             :id="'myChart' + item.id"
             style="width: 300px; height: 300px; display: inline-block"
         ></div>
+        <p>功能模块化</p>
+        <button @click="myFn">点击{{num}}次</button>
     </div>
 </template>
 
 <script>
+import{add} from './Add.js'
 export default {
     name: "demo",
     props: {},
     components: {},
     data() {
         return {
+            num:0,
             mychart: [],
             dataList: [
                 {
@@ -43,6 +47,9 @@ export default {
     computed: {},
     watch: {},
     methods: {
+        myFn(){
+         add(this,'num')
+        },
         drawLine() {
             for (let i = 0; i <= this.dataList.length; i++) {
                 this.mychart.push("mychart-" + i);

@@ -32,6 +32,10 @@ export default {
                 {
                     title:"自定义表格",
                     url:'/table'
+                },
+                {
+                    title:"栅栏布局",
+                    url:'/grid'
                 }
             ]
         }

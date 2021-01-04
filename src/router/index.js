@@ -207,6 +207,11 @@ export default new Router({
               path:'table',
               name:'table',
               component:()=>import('@/components/iView/table.vue')
+            },
+            {
+              path:'grid',
+              name:'grid',
+              component:()=>import('@/components/iView/Grid.vue')
             }
           ]
         },

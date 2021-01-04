@@ -15,6 +15,16 @@
         <button @click="playCancel">关闭语音列表</button>
 
         <button @click="voicePrompt('百度语音')">百度语音</button>
+        <br>
+        <br>
+        <el-input
+            v-model.lazy="textValue"
+            type="textarea"
+            autosize
+            placeholder="请输入内容后按回车"
+            style="width: 300px"
+            @keyup.enter.native="voicePrompt(textValue)"
+        ></el-input>
     </div>
 </template>
 
@@ -25,6 +35,7 @@ export default {
     components: {},
     data() {
         return {
+            textValue: "",
             words: "警告、警告、警告！",
             arr: [
                 {
@@ -63,15 +74,15 @@ export default {
             window.speechSynthesis.speak(to_speak);
         },
         playPause() {
-            console.log(111)
+            console.log(111);
             window.speechSynthesis.pause();
         },
         playResume() {
-            console.log(222)
+            console.log(222);
             window.speechSynthesis.resume();
         },
         playCancel() {
-            console.log(333)
+            console.log(333);
             window.speechSynthesis.cancel();
         },
         reader() {
@@ -85,11 +96,10 @@ export default {
             //  n.cancel();  //取消阅读
             //  n.pause();  //暂停阅读
         },
-        voicePrompt(type) {
+        voicePrompt(text) {
             new Audio(
-                `https://tts.baidu.com/text2audio?cuid=baike&lan=ZH&ie=UTF-8&spd=5&ctp=1&pdt=301&vol=15&rate=32&per=0&tex=百度语音为您服务`
+                `https://tts.baidu.com/text2audio?cuid=baike&lan=ZH&ie=UTF-8&spd=5&ctp=1&pdt=301&vol=15&rate=32&per=0&tex=${text}`
             ).play();
-            this[type]++;
             // 参数说明：https://ai.baidu.com/ai-doc/SPEECH/zk8hh4v39
             //ie=UTF-8：文字格式。
             //lan=zh：语言是中文，如果改为lan=en，则语言是英文
