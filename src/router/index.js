@@ -250,6 +250,10 @@ export default new Router({
         {
           path:'/to_echarts',
           component:()=>import('@/components/Echarts')
+        },
+        {
+          path:'/to_drag',
+          component:()=>import('@/components/Drag')
         }
       ]
     },

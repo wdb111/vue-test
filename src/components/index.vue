@@ -102,6 +102,10 @@ export default {
         {
           name:'Echarts图表',
           url:'/to_echarts'
+        },
+        {
+          name:'拖动div宽高',
+          url:'/to_drag'
         }
       ]
     }
