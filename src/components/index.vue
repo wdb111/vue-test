@@ -106,6 +106,18 @@ export default {
         {
           name:'拖动div宽高',
           url:'/to_drag'
+        },
+        {
+          name:'内嵌组件遮挡',
+          url:'/to_comp'
+        },
+        {
+          name:'左树右表',
+          url:'/to_tree_table'
+        },
+        {
+          name:'批量添加',
+          url:'/to_batch_add'
         }
       ]
     }

@@ -254,6 +254,18 @@ export default new Router({
         {
           path:'/to_drag',
           component:()=>import('@/components/Drag')
+        },
+        {
+          path:'/to_comp',
+          component:()=>import('@/components/Comp')
+        },
+        {
+          path:'/to_tree_table',
+          component:()=>import('@/components/TreeTable')
+        },
+        {
+          path:'/to_batch_add',
+          component:()=>import('@/components/BatchAdd')
         }
       ]
     },
