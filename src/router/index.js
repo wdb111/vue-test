@@ -266,6 +266,9 @@ export default new Router({
         {
           path:'/to_batch_add',
           component:()=>import('@/components/BatchAdd')
+        },{
+          path:'/to_table_roll',
+          component:()=>import('@/components/TableRoll')
         }
       ]
     },

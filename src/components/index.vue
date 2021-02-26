@@ -118,6 +118,10 @@ export default {
         {
           name:'批量添加',
           url:'/to_batch_add'
+        },
+        {
+          name:'表格滚动',
+          url:'/to_table_roll'
         }
       ]
     }
