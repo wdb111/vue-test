@@ -6,73 +6,31 @@
 -->
 <template>
     <div>
-        <div class="drive_box roll4">
-            <div class="roll4_con">
-                <span
-                    >中国铁路成都局集团有限公司201907第一批采购计划物资采购招标公告第一批采购计划物资采购招标公告</span
+        <h3>内容超出时滚动</h3>
+        <div class="security_info" id="right_text_top_box">
+            <div id="right_text_top1">
+                <div
+                    v-for="(item, index) in messages"
+                    :key="index"
+                    @click="checkedRow(item)"
                 >
+                    {{ item.name }}
+                </div>
             </div>
-            <div class="roll4_con">
-                <span
-                    >中国铁路成都局集团有限公司201907第一批采购计划物资采购招标公告购计划物资采购招标公告</span
+            <div id="right_text_top2" v-if="allowRoll">
+                <div
+                    v-for="(item, index) in messages"
+                    :key="index"
+                    @click="checkedRow(item)"
                 >
-            </div>
-            <div class="roll4_con">
-                <span
-                    >中国铁路成都局集团有限公司201907第一批采购计划物资采购招标公告采购招标公告</span
-                >
-            </div>
-            <div class="roll4_con">
-                <span
-                    >中国铁路成都局集团有限公司201907第一批采购计划物资采购招标公告第一批采购计划物资采购招标公告</span
-                >
-            </div>
-            <div class="roll4_con">
-                <span
-                    >中国铁路成都局集团有限公司201907第一批采购计划物资采购招标公告</span
-                >
-            </div>
-            <div class="roll4_con">
-                <span
-                    >中国铁路成都局集团有限公司201907第一批采购计划物资采购招标公告第一批采购计划物资</span
-                >
-            </div>
-            <div class="roll4_con">
-                <span
-                    >中国铁路成都局集团有限公司201907第一批采购计划物资采购招标公告</span
-                >
-            </div>
-            <div class="roll4_con">
-                <span
-                    >中国铁路成都局集团有限公司201907第一批采购计划物资采购招标公告第一批采购计划物资采购招标</span
-                >
-            </div>
-            <div class="roll4_con">
-                <span
-                    >中国铁路成都局集团有限公司201907第一批采购计划物资采购招标公告</span
-                >
-            </div>
-            <div class="roll4_con">
-                <span
-                    >中国铁路成都局集团有限公司201907第一批采购计划物资采购招标公告</span
-                >
-            </div>
-            <div class="roll4_con">
-                <span
-                    >中国铁路成都局集团有限公司201907第一批采购计划物资采购招标公告</span
-                >
-            </div>
-            <div class="roll4_con">
-                <span
-                    >中国铁路成都局集团有限公司201907第一批采购计划物资采购招标公告</span
-                >
+                    {{ item.name }}
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import $ from 'jquery';
 export default {
     name: "demo",
     props: {},
@@ -81,91 +39,107 @@ export default {
         return {
             messages: [
                 {
-                    message: "asdas",
-                    result: "正常",
-                    driverNo: "asdfasd",
-                    dreverName: "kdgjfhf",
+                    name: "1胜多负少的鬼地方个梵蒂冈梵蒂冈",
+                    id: "1",
                 },
                 {
-                    message: "asdas",
-                    result: "胜多负少的",
-                    driverNo: "asdfasd",
-                    dreverName: "kdgjfhf",
+                    name: "2孤鸿寡鹄接发广告",
+                    id: "2",
                 },
                 {
-                    message: "asdas",
-                    result: "正常",
-                    driverNo: "asdfasd",
-                    dreverName: "kdgjfhf",
+                    name: "3好几款加了个放电饭锅单方事故电饭锅",
+                    id: "3",
                 },
                 {
-                    message: "asdas",
-                    result: "胜多负少的",
-                    driverNo: "asdfasd",
-                    dreverName: "kdgjfhf",
+                    name: "4让他一人头有try让他一人头有如图",
+                    id: "4",
+                },
+                {
+                    name: "5不VNVB女包女不女保存V型",
+                    id: "5",
+                },
+                {
+                    name: "6发给红军号狂欢节",
+                    id: "6",
+                },
+                {
+                    name: "7金龟换酒体育部VN框架宽度改地方个梵蒂冈",
+                    id: "7",
+                },
+                {
+                    name: "8下再擦拭地方个梵蒂冈发",
+                    id: "8",
+                },
+                {
+                    name: "9建行卡号健康就好健康就好狂欢节狂欢节",
+                    id: "9",
+                },
+                {
+                    name: "10发给红军发个话费和规范化号狂欢节",
+                    id: "10",
                 },
             ],
-            message: null,
-            infobord1: null,
+            allowRoll:false,
+            myScrollTopTimer: null,
         };
     },
     filters: {},
     computed: {},
     watch: {},
     methods: {
-        gundong4(el, el_con) {
-            let doscroll = function () {
-                let $parent = $("." + el);
-                let $first = $parent.find("." + el_con + ":first");
-                let height = $first.height();
-                $first.animate(
-                    {
-                        marginTop: -height + "px",
-                    },
-                    500,
-                    function () {
-                        $first.css("marginTop", 0).appendTo($parent);
-                    }
-                );
+        checkedRow(row) {
+            console.log(row.id);
+        },
+        doitScollTop() {
+            let test = document.getElementById("right_text_top_box");
+            let test1 = document.getElementById("right_text_top1");
+            // let test2 = document.getElementById("right_text_top2");
+            this.allowRoll=test1.offsetHeight >= test.offsetHeight;
+            // if (test1.offsetHeight >= test.offsetHeight) {
+            //     test2.innerHTML = test1.innerHTML;
+            // }
+            function move() {
+                if (test.scrollTop >= test1.offsetHeight) {
+                    test.scrollTop = 0;
+                } else {
+                    test.scrollTop++;
+                }
+            }
+            let _this = this;
+            this.myScrollTopTimer = setInterval(move, 50);
+            test.onmouseover = function () {
+                clearInterval(_this.myScrollTopTimer);
             };
-            let scrollTimer;
-            let $this = $("." + el);
-            $(".roll4_con").hover(function () {
-                $(this).find("img").attr("src", "img/圆_选中.png");
-                $(this).siblings().find("img").attr("src", "img/圆-默认.png");
-            });
-            $this
-                .hover(
-                    function () {
-                        clearInterval(scrollTimer);
-                    },
-                    function () {
-                        scrollTimer = setInterval(function () {
-                            doscroll();
-                        }, 3000);
-                    }
-                )
-                .trigger("mouseleave");
+            test.onmouseout = function () {
+                _this.myScrollTopTimer = setInterval(move, 50);
+            };
         },
     },
     created() {},
     mounted() {
         this.$nextTick(() => {
-            this.gundong4("roll4", "roll4_con");
+            this.doitScollTop();
         });
+    },
+    beforeDestroy() {
+        this.myScrollTopTimer && clearInterval(this.myScrollTopTimer);
     },
 };
 </script> 
 
 <style lang='less' scoped>
-.drive_box {
-    margin: 50px;
-    height: 100px;
+.security_info {
+    width: 300px;
+    height: 200px;
+    margin: 200px auto;
     overflow: hidden;
     border: 1px solid #000;
-}
-.roll4_con:hover{
-    background-color: aqua;
-    cursor: pointer;
+    #right_text_top1,
+    #right_text_top2{
+        & div:hover {
+            background-color: turquoise;
+            cursor: pointer;
+        }
+    }
 }
 </style>

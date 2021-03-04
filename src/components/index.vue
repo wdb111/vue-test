@@ -120,7 +120,7 @@ export default {
           url:'/to_batch_add'
         },
         {
-          name:'表格滚动',
+          name:'内容滚动显示',
           url:'/to_table_roll'
         }
       ]
