@@ -122,6 +122,10 @@ export default {
         {
           name:'内容滚动显示',
           url:'/to_table_roll'
+        },
+        {
+          name:'动画',
+          url:'/to_animation'
         }
       ]
     }

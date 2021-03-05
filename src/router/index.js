@@ -269,6 +269,9 @@ export default new Router({
         },{
           path:'/to_table_roll',
           component:()=>import('@/components/TableRoll')
+        },{
+          path:'/to_animation',
+          component:()=>import('@/components/Animation')
         }
       ]
     },
