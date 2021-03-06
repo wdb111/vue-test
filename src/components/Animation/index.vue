@@ -24,6 +24,32 @@
                     <button class="d" key="bbb" v-else>{{ newNum }}</button>
                 </transition>
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div
+                style="
+                    width: 100px;
+                    height: 50px;
+                    background: red;
+                    margin: 10px 0;
+                "
+                v-for="(item, index) in dataList"
+                :key="index"
+            >
+                <span class="wrap">
+                    <transition name="show">
+                        <button class="d" key="aaa" v-if="item.show">
+                            {{ item.oldValue }}
+                        </button>
+                        <button class="d" key="bbb" v-else>
+                            {{ item.newValue }}
+                        </button>
+                    </transition>
+                </span>
+            </div>
         </div>
     </div>
 </template>
@@ -38,6 +64,32 @@ export default {
             newNum: 0,
             showValue: true,
             timer: null,
+            dataList: [
+                {
+                    name: "张三",
+                    oldValue: 0,
+                    newValue: 0,
+                    show: true,
+                },
+                {
+                    name: "李四",
+                    oldValue: 0,
+                    newValue: 0,
+                    show: true,
+                },
+                {
+                    name: "王五",
+                    oldValue: 0,
+                    newValue: 0,
+                    show: true,
+                },
+                {
+                    name: "刘六",
+                    oldValue: 0,
+                    newValue: 0,
+                    show: true,
+                },
+            ],
         };
     },
     methods: {
@@ -52,6 +104,15 @@ export default {
     created() {
         this.timer = setInterval(() => {
             this.addNum();
+            this.dataList.forEach((item, index) => {
+                if (index % 2 == 0) {
+                    item.newValue++;
+                }
+                if (item.newValue !== item.oldValue) {
+                    item.oldValue = item.newValue;
+                    item.show = !item.show;
+                }
+            });
         }, 2000);
     },
     beforeDestroy() {
