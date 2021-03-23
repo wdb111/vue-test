@@ -25,59 +25,68 @@
                 <div>操作</div>
             </div>
             <div class="content">
-                <div class="item" v-for="(row, index) in dataList">
-                    <div>
-                        <Checkbox
-                            @on-change="(val) => changeSelect(val, row)"
-                            v-model="row.selected"
-                        ></Checkbox>
+                <draggable
+                    v-model="seeTableData"
+                    animation="500"
+                    force-fallback="true"
+                    handle=".move"
+                    :move="checkMove"
+                >
+                    <div class="item" v-for="(row, index) in dataList">
+                        <div >
+                            <Checkbox
+                                @on-change="(val) => changeSelect(val, row)"
+                                v-model="row.selected"
+                            ></Checkbox>
+                        </div>
+                        <div class="move" style="cursor: move;">{{ index + 1 }}</div>
+                        <div>
+                            <Input
+                                v-model="row.value1"
+                                placeholder="Enter something..."
+                            />
+                        </div>
+                        <div>
+                            <i-switch size="large" v-model="row.value2">
+                                <span slot="open">开启</span>
+                                <span slot="close">关闭</span>
+                            </i-switch>
+                        </div>
+                        <div>
+                            <Input
+                                v-model="row.value3"
+                                placeholder="Enter something..."
+                            />
+                        </div>
+                        <div>
+                            <Input
+                                v-model="row.value4"
+                                placeholder="Enter something..."
+                            />
+                        </div>
+                        <div>
+                            <Input
+                                v-model="row.value5"
+                                placeholder="Enter something..."
+                            />
+                        </div>
+                        <div>
+                            <Icon type="md-create" @click="updateRow(row)" />
+                            <Icon type="md-trash" @click="deleteRow(index)" />
+                        </div>
                     </div>
-                    <div>{{ index + 1 }}</div>
-                    <div>
-                        <Input
-                            v-model="row.value1"
-                            placeholder="Enter something..."
-                        />
-                    </div>
-                    <div>
-                        <i-switch size="large" v-model="row.value2">
-                            <span slot="open">开启</span>
-                            <span slot="close">关闭</span>
-                        </i-switch>
-                    </div>
-                    <div>
-                        <Input
-                            v-model="row.value3"
-                            placeholder="Enter something..."
-                        />
-                    </div>
-                    <div>
-                        <Input
-                            v-model="row.value4"
-                            placeholder="Enter something..."
-                        />
-                    </div>
-                    <div>
-                        <Input
-                            v-model="row.value5"
-                            placeholder="Enter something..."
-                        />
-                    </div>
-                    <div>
-                        <Icon type="md-create" @click="updateRow(row)" />
-                        <Icon type="md-trash" @click="deleteRow(index)" />
-                    </div>
-                </div>
+                </draggable>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import draggable from "vuedraggable";
 export default {
     name: "demo",
     props: {},
-    components: {},
+    components: { draggable },
     data() {
         return {
             indeterminate: true,
@@ -89,6 +98,9 @@ export default {
     computed: {},
     watch: {},
     methods: {
+        checkMove(val) {
+            return true;
+        },
         handleCheckAll() {
             if (this.indeterminate) {
                 this.checkAll = false;

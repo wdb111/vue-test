@@ -1,122 +1,249 @@
 
 
 <template>
-  <div class="hello">
-    <div class="drag-field">
-      <div
-        class="item"
-        draggable="true"
-        @dragstart="dragstart($event, item)"
-        @dragend="dragend"
-        v-for="(item, index) in items"
-        :key="index"
-      >{{ item.label }}</div>
+    <div class="hello">
+        <h2>
+            <a
+                href="http://www.itxst.com/vue-draggable/tutorial.html"
+                target="_block"
+            >
+                vuedraggable中文文档
+            </a>
+        </h2>
+
+        <div>{{ drag ? "拖拽中" : "拖拽停止" }}</div>
+        <p>单列拖拽</p>
+        <!--使用draggable组件-->
+        <draggable
+            v-model="myArray"
+            chosenClass="chosen"
+            forceFallback="true"
+            group="people"
+            animation="1000"
+            @start="onStart"
+            @end="onEnd"
+        >
+            <transition-group>
+                <div class="item" v-for="element in myArray" :key="element.id">
+                    {{ element.name }}
+                </div>
+            </transition-group>
+        </draggable>
+        <br>
+        <hr />
+        <div style="padding: 10px">
+            <!--使用draggable组件-->
+            <p>表格拖动</p>
+            <div>点击第一列数字进行拖动，其他列拖拽无效</div>
+            <table class="itxst">
+                <draggable
+                    v-model="myArray"
+                    animation="500"
+                    force-fallback="true"
+                    handle=".move"
+                    @start="onStart"
+                    @end="onEnd"
+                    :move="checkMove"
+                >
+                    <tr v-for="item in myArray" :key="item.id">
+                        <td style="width: 50px" class="move">{{ item.id }}</td>
+                        <td style="width: 250px">{{ item.name }}</td>
+                    </tr>
+                </draggable>
+            </table>
+        </div>
+        <hr />
+        <br>
+        <div>
+            <!--使用draggable组件-->
+            <p>多列拖拽</p>
+            <div class="itxst">
+                <div class="col">
+                    <div class="title">国内网站</div>
+                    <draggable
+                        v-model="arr1"
+                        group="site"
+                        animation="300"
+                        dragClass="dragClass"
+                        ghostClass="ghostClass"
+                        chosenClass="chosenClass"
+                        @start="onStart"
+                        @end="onEnd"
+                    >
+                        <transition-group>
+                            <div
+                                class="item"
+                                v-for="item in arr1"
+                                :key="item.id"
+                            >
+                                {{ item.name }}
+                            </div>
+                        </transition-group>
+                    </draggable>
+                </div>
+                <div class="col">
+                    <div class="title">你可以把左边的元素拖到右边</div>
+                    <draggable
+                        v-model="arr2"
+                        group="site"
+                        animation="300"
+                        dragClass="dragClass"
+                        ghostClass="ghostClass"
+                        chosenClass="chosenClass"
+                        @start="onStart"
+                        @end="onEnd"
+                    >
+                        <transition-group>
+                            <div
+                                class="item"
+                                v-for="item in arr2"
+                                :key="item.id"
+                            >
+                                {{ item.name }}
+                            </div>
+                        </transition-group>
+                    </draggable>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="drop-field" @drop="drop" @dragover.prevent>
-      <div class="item" v-if="droppedItem !== ''">{{ droppedItem }}</div>
-    </div>
-    <div id="app" @mousedown="move">
-      <!--绑定按下事件-->
-      {{positionX}}
-      {{positionY}}
-    </div>
-  </div>
 </template>
 
 <script>
-/* eslint-disable */
+//导入draggable组件
+import draggable from "vuedraggable";
 export default {
-  name: "",
-  data() {
-    return {
-      droppedItem: "",
-      items: [
-        {
-          id: 1,
-          label: "模块一"
+    name: "",
+    data() {
+        return {
+            drag: false,
+             //定义要被拖拽对象的数组
+      arr1:[
+        {id:1,name:'www.itxst.com'},
+        {id:2,name:'www.jd.com'},
+        {id:3,name:'www.baidu.com'},
+        {id:3,name:'www.taobao.com'}
+        ],
+        arr2:[
+        {id:1,name:'www.google.com'},
+        {id:2,name:'www.msn.com'},
+        {id:3,name:'www.ebay.com'},
+        {id:4,name:'www.yahoo.com'}
+        ] ,
+            //定义要被拖拽对象的数组
+            myArray: [
+                { people: "cn", id: 1, name: "www.itxst.com" },
+                { people: "cn", id: 2, name: "www.baidu.com" },
+                { people: "cn", id: 3, name: "www.taobao.com" },
+                { people: "us", id: 4, name: "www.google.com" },
+            ],
+        };
+    },
+    components: {
+        draggable,
+    },
+    methods: {
+        checkMove(evt) {
+            console.log(evt);
+            return true;
         },
-        {
-          id: 2,
-          label: "模块二"
+        //开始拖拽事件
+        onStart() {
+            this.drag = true;
         },
-        {
-          id: 3,
-          label: "模块三"
-        }
-      ],
-      positionX: 0,
-      positionY: 0
-    };
-  },
-  methods: {
-    dragstart(event, item) {
-      event.dataTransfer.setData("item", item.label);
+        //拖拽结束事件
+        onEnd() {
+            this.drag = false;
+            console.log(this.myArray);
+        },
     },
-    drop(event) {
-      this.droppedItem = event.dataTransfer.getData("item");
-    },
-    dragend(event) {
-      event.dataTransfer.clearData();
-    },
-    move(e) {
-      let odiv = e.target; //获取目标元素
-
-      //算出鼠标相对元素的位置
-      let disX = e.clientX - odiv.offsetLeft;
-      let disY = e.clientY - odiv.offsetTop;
-      document.onmousemove = e => {
-        //鼠标按下并移动的事件
-        //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
-        let left = e.clientX - disX;
-        let top = e.clientY - disY;
-
-        //绑定元素位置到positionX和positionY上面
-        this.positionX = top;
-        this.positionY = left;
-
-        //移动当前元素
-        odiv.style.left = left + "px";
-        odiv.style.top = top + "px";
-      };
-      document.onmouseup = e => {
-        document.onmousemove = null;
-        document.onmouseup = null;
-      };
-    }
-  }
 };
 </script>
 <style lang="less" scoped>
-.drag-field,
-.drop-field {
-  height: 10rem;
-  box-sizing: border-box;
-  padding: 1rem;
-  background-color: #eee;
-  margin-top: 1rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+h2 {
+    margin-top: 30px;
+}
+/*被拖拽对象的样式*/
+.item {
+    display: inline-block;
+    padding: 6px;
+    background-color: #fdfdfd;
+    border: solid 1px #eee;
+    margin: 10px;
+    cursor: move;
+}
+/*选中样式*/
+.chosen {
+    border: solid 2px #3089dc !important;
+}
+/*定义要拖拽元素的样式*/
+table.itxst {
+    color: #333333;
+    border: #ddd solid 1px;
+    border-collapse: collapse;
+}
+table.itxst th {
+    border: #ddd solid 1px;
+    padding: 8px;
+    background-color: #dedede;
+}
+table.itxst td {
+    border: #ddd solid 1px;
+    padding: 8px;
+    background-color: #ffffff;
+}
+table.itxst tr {
+    cursor: pointer;
+}
+table.itxst td.move:hover {
+    cursor: move;
 }
 
-.item {
-  width: 30%;
-  height: 3rem;
-  text-align: center;
-  line-height: 3rem;
-  font-size: 0.9rem;
-  background-color: royalblue;
-  color: #eee;
+.ghostClass{
+  background-color:  blue !important;
 }
-.item:hover {
-  cursor: pointer;
+.chosenClass{
+  background-color: red !important;
+  opacity: 1!important;
 }
-#app {
-  position: relative; /*定位*/
-  top: 10px;
-  left: 10px;
-  width: 200px;
-  height: 200px;
-  background: #666; /*设置一下背景*/
+.dragClass{
+  background-color: blueviolet !important;
+  opacity: 1 !important;
+  box-shadow:none !important;
+  outline:none !important;
+  background-image:none !important;
+}
+.itxst{
+  margin: 10px;
+  
+}
+.title{
+  padding: 6px 12px;
+}
+.col{
+  width: 40%;
+  flex: 1;
+  padding: 10px;
+  border: solid 1px #eee;
+  border-radius:5px ;
+  float: left;
+}
+.col+.col{
+ margin-left: 10px;
+}
+
+.item{
+  padding: 6px 12px;
+  margin: 0px 10px 0px 10px;
+  border:  solid 1px #eee;
+   background-color: #f1f1f1;
+}
+.item:hover{
+  background-color: #fdfdfd;
+  cursor: move;
+}
+.item+.item{
+  border-top:none ;
+  margin-top: 6px;
 }
 </style>
