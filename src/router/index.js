@@ -203,15 +203,15 @@ export default new Router({
               path: "tree",
               name: "tree",
               component: () => import("@/components/iView/Tree.vue")
-            },{
-              path:'table',
-              name:'table',
-              component:()=>import('@/components/iView/table.vue')
+            }, {
+              path: 'table',
+              name: 'table',
+              component: () => import('@/components/iView/table.vue')
             },
             {
-              path:'grid',
-              name:'grid',
-              component:()=>import('@/components/iView/Grid.vue')
+              path: 'grid',
+              name: 'grid',
+              component: () => import('@/components/iView/Grid.vue')
             }
           ]
         },
@@ -236,42 +236,48 @@ export default new Router({
           component: () => import('@/components/D3-js')
         },
         {
-          path:'/to_audio',
-          component:()=>import('@/components/Audio')
+          path: '/to_audio',
+          component: () => import('@/components/Audio')
         },
         {
-          path:'/to_custom_style',
-          component:()=>import('@/components/CustomStyle')
+          path: '/to_custom_style',
+          component: () => import('@/components/CustomStyle')
         },
         {
-          path:'/to_excel',
-          component:()=>import('@/components/ExportExcel')
+          path: '/to_excel',
+          component: () => import('@/components/ExportExcel')
         },
         {
-          path:'/to_echarts',
-          component:()=>import('@/components/Echarts')
+          path: '/to_echarts',
+          component: () => import('@/components/Echarts')
         },
         {
-          path:'/to_drag',
-          component:()=>import('@/components/Drag')
+          path: '/to_drag',
+          component: () => import('@/components/Drag')
         },
         {
-          path:'/to_comp',
-          component:()=>import('@/components/Comp')
+          path: '/to_comp',
+          component: () => import('@/components/Comp')
         },
         {
-          path:'/to_tree_table',
-          component:()=>import('@/components/TreeTable')
+          path: '/to_tree_table',
+          component: () => import('@/components/TreeTable')
         },
         {
-          path:'/to_batch_add',
-          component:()=>import('@/components/BatchAdd')
-        },{
-          path:'/to_table_roll',
-          component:()=>import('@/components/TableRoll')
-        },{
-          path:'/to_animation',
-          component:()=>import('@/components/Animation')
+          path: '/to_batch_add',
+          component: () => import('@/components/BatchAdd')
+        }, 
+        {
+          path: '/to_table_roll',
+          component: () => import('@/components/TableRoll')
+        }, 
+        {
+          path: '/to_animation',
+          component: () => import('@/components/Animation')
+        },
+        {
+          path: '/to_upload_file',
+          component: () => import('@/components/UploadFile')
         }
       ]
     },

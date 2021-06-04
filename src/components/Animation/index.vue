@@ -50,6 +50,27 @@
                     </transition>
                 </span>
             </div>
+            <div
+                style="
+                    width: 100px;
+                    height: 50px;
+                    background: red;
+                    margin: 10px 0;
+                "
+                v-for="(item, index) in dataList"
+                :key="index"
+            >
+                <span class="wrap">
+                    <transition name="show">
+                        <button class="d" key="aaa" v-if="item.show">
+                            {{ item.oldValue }}
+                        </button>
+                        <button class="d" key="bbb" v-else>
+                            {{ item.newValue }}
+                        </button>
+                    </transition>
+                </span>
+            </div>
         </div>
     </div>
 </template>

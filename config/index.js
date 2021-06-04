@@ -20,19 +20,13 @@ module.exports = {
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
     proxyTable: {
       '/api':{
-        target: 'http://localhost:9999',
+        // target: 'http://localhost:9999',
+        target: 'http://localhost:8888',
         pathRewrite: {
           changeOrigin: true,
           '^/api': '/'
         },
-      },
-      '/apj':{
-        target: 'http://139.9.60.172:94',
-        pathRewrite: {
-          changeOrigin: true,
-          '^/apj': '/'
-        },
-      },
+      }
     },
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and

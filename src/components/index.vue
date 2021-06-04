@@ -126,6 +126,10 @@ export default {
         {
           name:'动画',
           url:'/to_animation'
+        },
+        {
+          name:'上传文件',
+          url:'/to_upload_file'
         }
       ]
     }
