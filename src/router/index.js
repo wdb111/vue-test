@@ -278,6 +278,10 @@ export default new Router({
         {
           path: '/to_upload_file',
           component: () => import('@/components/UploadFile')
+        },
+        {
+          path: '/to_top_component',
+          component: () => import('@/components/top-component')
         }
       ]
     },

@@ -130,6 +130,10 @@ export default {
         {
           name:'上传文件',
           url:'/to_upload_file'
+        },
+        {
+          name:'顶部组件',
+          url:'/to_top_component'
         }
       ]
     }
