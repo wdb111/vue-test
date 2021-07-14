@@ -1,3 +1,4 @@
+// 1、变量
 @top: 10px;
 @textAlign: center;
 
@@ -17,13 +18,135 @@ h1 {
 
 .contant {
   margin-left: 200px;
-  
+
   pre {
     width: 400px;
-    padding: 20px ;
+    padding: 20px;
     box-sizing: border-box;
     font: 16px "微软雅黑";
     color: @nice-blue + #007013;
     background-color: @nice-blue + #000000;
   }
+}
+
+// 2、混合（Mixins）
+.bordered {
+  border-bottom: 4px dotted black;
+}
+
+h3 {
+  .bordered()
+}
+
+// 3、嵌套（Nesting）
+h3 {
+  padding: 10px;
+
+  a {
+    font-size: 20px;
+    font-weight: bold;
+    color: brown;
+  }
+}
+
+// @规则嵌套和冒泡
+h3 {
+  width: 100%;
+
+  @media (max-width: 1200px) {
+    //可将媒体查询等规则嵌套在内部
+    background-color: red;
+  }
+}
+
+// 4、运算（Operations）
+// 算术运算符 +、-、*、/ 可以对任何数字、颜色或变量进行运算
+// 所有操作数被转换成相同的单位，以最左侧的单位为准
+@conversion-1: 5cm + 10mm; // 结果是 6cm
+@conversion-2: 2 - 3cm - 5mm; // 结果是 -1.5cm
+@base: 5%;
+@filler: @base * 2; // 结果是 10%
+@other: @base + @filler; // 结果是 15%
+
+// 乘法和除法不作转换
+@base: 2cm * 3mm; // 结果是 6cm
+
+// 还可以对颜色进行算术运算
+@color: #224488 / 2; //结果是 #112244
+
+#app {
+  background-color: #112244 + #111; // 结果是 #223355
+}
+
+// 5、转义（Escaping）
+@min768: ~"(min-width: 768px)";
+
+.element {
+  @media @min768 {
+    font-size: 1.2rem;
+  }
+}
+
+// 注意，从 Less 3.5 开始，可以简写为：
+// @min768: (min-width: 768px);
+// .element {
+//   @media @min768 {
+//     font-size: 1.2rem;
+//   }
+// }
+
+// 6、函数（Functions）
+@base: #f04615;
+@width: 0.5;
+
+.class {
+  width: percentage(@width); // returns `50%`
+  color: saturate(@base, 5%);
+  background-color: spin(lighten(@base, 25%), 8);
+}
+
+// 7、命名空间和访问符
+#bundle() {
+  width: 100px;
+  height: 100px;
+
+  .button {
+    background-color: red;
+  }
+}
+
+.app {
+  color: rgb(185, 74, 40);
+  #bundle.button() //混合#bundle下的.button样式； 还可以书写为 #bundle > .button 形式
+}
+
+// 8、映射（Maps）
+#colors() {
+  primary: blue;
+  secondary: green;
+}
+
+.button {
+  color: #colors[primary];
+  border: 1px solid #colors[secondary];
+}
+
+// 9、作用域（Scope）
+@var: red;
+
+#page {
+  @var: white;
+
+  #header {
+    color: @var; // white
+  }
+}
+// 混合（mixin）和变量的定义不必在引用之前事先定义
+@var: red;
+
+#page {
+  #header {
+    color: @var; // white
+  }
+  @var: white;
 }

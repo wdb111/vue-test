@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>less在vue中的使用</h1>
+    <h1>less在vue2.x中的使用</h1>
     <h3>
       <a href="https://less.bootcss.com/" target="_blank">less中文文档</a>
     </h3>
