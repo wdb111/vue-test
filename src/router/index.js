@@ -216,6 +216,36 @@ export default new Router({
           ]
         },
         {
+          path: '/to_vant',
+          name: 'vant',
+          component: () => import('../components/Vant/index.vue'),
+          children: [{
+              path: 'button',
+              component: () => import('../components/Vant/Button.vue')
+            },
+            {
+              path: 'form',
+              component: () => import('../components/Vant/Form.vue')
+            },
+            {
+              path: 'select',
+              component: () => import('../components/Vant/Select.vue')
+            },
+            {
+              path: 'textare',
+              component: () => import('../components/Vant/Textarea.vue')
+            },
+            {
+              path: 'image',
+              component: () => import('../components/Vant/Image.vue')
+            },
+            {
+              path:'richText',
+              component:()=>import('../components/Vant/RichText.vue')
+            }
+          ]
+        },
+        {
           path: "/identify",
           component: () => import("@/components/Identify")
         },
@@ -240,10 +270,6 @@ export default new Router({
           component: () => import('@/components/Audio')
         },
         {
-          path: '/to_custom_style',
-          component: () => import('@/components/CustomStyle')
-        },
-        {
           path: '/to_excel',
           component: () => import('@/components/ExportExcel')
         },
@@ -256,21 +282,17 @@ export default new Router({
           component: () => import('@/components/Drag')
         },
         {
-          path: '/to_comp',
-          component: () => import('@/components/Comp')
-        },
-        {
           path: '/to_tree_table',
           component: () => import('@/components/TreeTable')
         },
         {
           path: '/to_batch_add',
           component: () => import('@/components/BatchAdd')
-        }, 
+        },
         {
           path: '/to_table_roll',
           component: () => import('@/components/TableRoll')
-        }, 
+        },
         {
           path: '/to_animation',
           component: () => import('@/components/Animation')
@@ -280,9 +302,9 @@ export default new Router({
           component: () => import('@/components/UploadFile')
         },
         {
-          path: '/to_top_component',
-          component: () => import('@/components/top-component')
-        }
+          path: '/to_waterfalls_flow',
+          component: () => import('@/components/WaterfallsFlow')
+        },
       ]
     },
 

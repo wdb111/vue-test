@@ -32,6 +32,10 @@ export default {
           url: '/to_iview/nav'
         },
         {
+          name: 'Vant例子',
+          url: '/to_vant/button'
+        },
+        {
           name: '代码高亮编辑器',
           url: '/to_codemirror'
         },
@@ -92,10 +96,6 @@ export default {
           url:'/to_audio'
         },
         {
-          name:'单选框自定义样式',
-          url:'/to_custom_style'
-        },
-        {
           name:'导出Excel表格',
           url:'/to_excel'
         },
@@ -106,10 +106,6 @@ export default {
         {
           name:'拖动div宽高',
           url:'/to_drag'
-        },
-        {
-          name:'内嵌组件遮挡',
-          url:'/to_comp'
         },
         {
           name:'左树右表',
@@ -132,8 +128,8 @@ export default {
           url:'/to_upload_file'
         },
         {
-          name:'顶部组件',
-          url:'/to_top_component'
+          name:'瀑布流+展开、收起',
+          url:'/to_waterfalls_flow'
         }
       ]
     }
@@ -159,6 +155,6 @@ header {
 }
 
 .button {
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 </style>

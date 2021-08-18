@@ -10,11 +10,16 @@ import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import SIdentify from './components/Identify/identify'//验证码
 import echarts from 'echarts'
+import Vant from 'vant';
+import 'vant/lib/index.css';
+import waterfall from 'vue-waterfall2';//瀑布流
+
+Vue.use(waterfall)
+
+Vue.use(Vant);
 Vue.prototype.$echarts = echarts
 Vue.use(SIdentify)
-
 Vue.use(ViewUI);
-
 // Vue.use(myPlugin);
 Vue.use(ElementUI);
 Vue.config.productionTip = false
