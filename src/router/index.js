@@ -242,6 +242,10 @@ export default new Router({
             {
               path:'richText',
               component:()=>import('../components/Vant/RichText.vue')
+            },
+            {
+              path:'tabs',
+              component:()=>import('../components/Vant/Tabs.vue')
             }
           ]
         },

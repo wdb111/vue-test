@@ -50,6 +50,10 @@ export default {
                 title: "富文本",
                 url: "richText",
               },
+              {
+                title: "标签页",
+                url: "tabs",
+              },
             ],
         };
     },
