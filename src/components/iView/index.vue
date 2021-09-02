@@ -36,7 +36,11 @@ export default {
                 {
                     title:"栅栏布局",
                     url:'/grid'
-                }
+                },
+              {
+                title:"颜色选择器",
+                url:'/color_selector'
+              }
             ]
         }
     },

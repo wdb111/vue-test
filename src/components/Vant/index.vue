@@ -54,6 +54,10 @@ export default {
                 title: "标签页",
                 url: "tabs",
               },
+              {
+                title: "列表",
+                url: "list",
+              },
             ],
         };
     },

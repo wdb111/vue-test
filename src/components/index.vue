@@ -130,6 +130,10 @@ export default {
         {
           name:'瀑布流+展开、收起',
           url:'/to_waterfalls_flow'
+        },
+        {
+          name:'拖拽、缩放元素',
+          url:'/to_drag_resize'
         }
       ]
     }

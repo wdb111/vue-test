@@ -212,6 +212,11 @@ export default new Router({
               path: 'grid',
               name: 'grid',
               component: () => import('@/components/iView/Grid.vue')
+            },
+            {
+              path: 'color_selector',
+              name: 'color_selector',
+              component: () => import('@/components/iView/ColorSelector.vue')
             }
           ]
         },
@@ -246,6 +251,10 @@ export default new Router({
             {
               path:'tabs',
               component:()=>import('../components/Vant/Tabs.vue')
+            },
+            {
+              path:'list',
+              component:()=>import('../components/Vant/List.vue')
             }
           ]
         },
@@ -308,6 +317,10 @@ export default new Router({
         {
           path: '/to_waterfalls_flow',
           component: () => import('@/components/WaterfallsFlow')
+        },
+        {
+          path: '/to_drag_resize',
+          component: () => import('@/components/DragResize')
         },
       ]
     },

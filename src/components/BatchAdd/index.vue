@@ -26,7 +26,7 @@
             </div>
             <div class="content">
                 <draggable
-                    v-model="seeTableData"
+                    v-model="dataList"
                     animation="500"
                     force-fallback="true"
                     handle=".move"
@@ -43,6 +43,7 @@
                         <div>
                             <Input
                                 v-model="row.value1"
+                                style="width: 100px"
                                 placeholder="Enter something..."
                             />
                         </div>
@@ -55,18 +56,21 @@
                         <div>
                             <Input
                                 v-model="row.value3"
+                                style="width: 100px"
                                 placeholder="Enter something..."
                             />
                         </div>
                         <div>
                             <Input
                                 v-model="row.value4"
+                                style="width: 100px"
                                 placeholder="Enter something..."
                             />
                         </div>
                         <div>
                             <Input
                                 v-model="row.value5"
+                                style="width: 100px"
                                 placeholder="Enter something..."
                             />
                         </div>
@@ -136,7 +140,7 @@ export default {
     created() {},
     mounted() {},
 };
-</script> 
+</script>
 
 <style lang='less' scoped>
 .btn {

@@ -128,21 +128,12 @@ export default {
         },
     },
     created() {
-        // this.divHeight = 700;
     },
     mounted() {
         this.dragControllerDiv();
-        // this.screenWidth = document.body.clientWidth;
-        // this.screenHeight = document.body.clientHeight;
-        // window.onresize = () => {
-        //     return (() => {
-        //         this.screenWidth = document.body.clientWidth;
-        //         this.screenHeight = document.body.clientHeight;
-        //     })();
-        // };
     },
 };
-</script> 
+</script>
 
 <style lang='less' scoped>
 #drag-box {
