@@ -134,6 +134,10 @@ export default {
         {
           name:'拖拽、缩放元素',
           url:'/to_drag_resize'
+        },
+        {
+          name:'底部跟随切换',
+          url:'/to_foot_follow'
         }
       ]
     }

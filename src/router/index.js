@@ -255,6 +255,10 @@ export default new Router({
             {
               path:'list',
               component:()=>import('../components/Vant/List.vue')
+            },
+            {
+              path:'swiper',
+              component:()=>import('../components/Vant/Swiper.vue')
             }
           ]
         },
@@ -321,6 +325,10 @@ export default new Router({
         {
           path: '/to_drag_resize',
           component: () => import('@/components/DragResize')
+        },
+        {
+          path: '/to_foot_follow',
+          component: () => import('@/components/FootFollow')
         },
       ]
     },

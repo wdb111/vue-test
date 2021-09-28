@@ -58,6 +58,10 @@ export default {
                 title: "列表",
                 url: "list",
               },
+              {
+                title: "多功能轮播",
+                url: "swiper",
+              },
             ],
         };
     },
