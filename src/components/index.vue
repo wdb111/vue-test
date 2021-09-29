@@ -138,7 +138,11 @@ export default {
         {
           name:'底部跟随切换',
           url:'/to_foot_follow'
-        }
+        },
+          {
+              name:'撤销、恢复',
+              url:'/to_undo_restore'
+          }
       ]
     }
   },

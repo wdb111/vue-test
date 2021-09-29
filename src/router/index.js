@@ -330,6 +330,10 @@ export default new Router({
           path: '/to_foot_follow',
           component: () => import('@/components/FootFollow')
         },
+        {
+          path: '/to_undo_restore',
+          component: () => import('@/components/UndoRestore')
+        },
       ]
     },
 
