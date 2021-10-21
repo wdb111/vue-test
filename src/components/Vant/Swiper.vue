@@ -121,6 +121,7 @@ export default {
             isLoop:false,
             isVertical: false,
             loopTime: 1000,
+            initialSlide:1000,
             show: true,
             current: 0,
             swiperOption2: {
