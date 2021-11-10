@@ -35,6 +35,15 @@ export default {
     computed: {},
     watch: {},
     methods: {
+        // 监听页面是否全屏
+        onResize(){
+            let explorer = window.navigator.userAgent.toLowerCase();
+            if (explorer.indexOf('chrome') > 0) {//webkit
+                this.fullscreen = document.body.scrollHeight === window.screen.height && document.body.scrollWidth === window.screen.width;
+            } else {//IE 9+  fireFox
+                this.fullscreen = window.outerHeight === window.screen.height && window.outerWidth === window.screen.width;
+            }
+        },
         //全屏
         fullScreen() {
             let element = document.documentElement;
@@ -79,9 +88,11 @@ export default {
         },
     },
     created() {},
-    mounted() {},
+    mounted() {
+            this.onResize()
+    },
 };
-</script> 
+</script>
 
 <style lang='less' scoped>
 #screenFull {
