@@ -16,6 +16,7 @@
         >
             <el-button size="small" type="primary">点击上传</el-button>
         </el-upload>
+        <img src="/api/source/1.jpg" alt="" width="200" height="200">
     </div>
 </template>
 
@@ -45,7 +46,7 @@ export default {
     created() {},
     mounted() {},
 };
-</script> 
+</script>
 
 <style lang='less' scoped>
 </style>
