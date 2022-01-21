@@ -62,6 +62,9 @@ export default {
                 {
                     title: '多功能轮播',
                     url: 'swiper'
+                },{
+                title: '滑动单元格',
+                    url:'swipeCell'
                 }
             ]
         }

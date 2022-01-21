@@ -259,6 +259,10 @@ export default new Router({
             {
               path:'swiper',
               component:()=>import('../components/Vant/Swiper.vue')
+            },
+            {
+              path:'swipeCell',
+              component:()=>import('../components/Vant/SwipeCell.vue')
             }
           ]
         },
@@ -333,6 +337,14 @@ export default new Router({
         {
           path: '/to_undo_restore',
           component: () => import('@/components/UndoRestore')
+        },
+        {
+          path: '/to_monaco_editor',
+          component: () => import('@/components/MonacoEditor')
+        },
+        {
+          path: '/to_color_picker',
+          component: () => import('@/components/ColorPicker')
         },
       ]
     },

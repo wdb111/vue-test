@@ -142,7 +142,15 @@ export default {
           {
               name:'撤销、恢复',
               url:'/to_undo_restore'
-          }
+          },
+          {
+              name:'monaco-editor编辑器',
+              url:'/to_monaco_editor'
+          },
+          {
+              name:'颜色选择器',
+              url:'/to_color_picker'
+          },
       ]
     }
   },

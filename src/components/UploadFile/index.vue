@@ -16,36 +16,45 @@
         >
             <el-button size="small" type="primary">点击上传</el-button>
         </el-upload>
-        <img src="/api/source/1.jpg" alt="" width="200" height="200">
+        <a
+            title="点击下载"
+            class="a-box"
+            href="/api/source/1.jpg"
+            download="1.jpg"
+            style="color:black"
+        ><img src="/api/source/1.jpg" alt="" width="200" height="200"></a>
+
     </div>
 </template>
 
 <script>
 export default {
-    name: "UploadFile",
+    name: 'UploadFile',
     props: {},
     components: {},
-    data() {
-        return {};
+    data () {
+        return {}
     },
     filters: {},
     computed: {},
     watch: {},
     methods: {
         // 文件上传成功时的钩子
-        handleSuccess(response, file, fileList) {
+        handleSuccess (response, file, fileList) {
             // console.log(response, file, fileList);
-            this.$message.success("上传成功");
+            this.$message.success('上传成功')
         },
         // 文件上传失败时的钩子
-        handleError(err, file, fileList) {
+        handleError (err, file, fileList) {
             // console.log(err, file, fileList);
-            this.$message.error("上传失败");
-        },
+            this.$message.error('上传失败')
+        }
     },
-    created() {},
-    mounted() {},
-};
+    created () {
+    },
+    mounted () {
+    }
+}
 </script>
 
 <style lang='less' scoped>

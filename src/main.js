@@ -15,6 +15,8 @@ import 'vant/lib/index.css';
 import waterfall from 'vue-waterfall2';//瀑布流
 
 Vue.use(waterfall)
+import vcolorpicker from 'vcolorpicker'//颜色选择器
+Vue.use(vcolorpicker)
 
 Vue.use(Vant);
 Vue.prototype.$echarts = echarts
