@@ -42,6 +42,7 @@
     "view-design": "^4.2.0",
     "vue": "^2.5.2",
     "vue-color-gradient-picker": "^0.1.2",
+    "vue-cropper": "^0.5.8",
     "vue-drag-resize": "^1.5.4",
     "vue-mobile-audio": "^0.1.3",
     "vue-quill-editor": "^3.0.6",

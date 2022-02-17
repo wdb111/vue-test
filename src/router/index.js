@@ -346,6 +346,10 @@ export default new Router({
           path: '/to_color_picker',
           component: () => import('@/components/ColorPicker')
         },
+        {
+          path: '/to_cropper',
+          component: () => import('@/components/Cropper')
+        },
       ]
     },
 
