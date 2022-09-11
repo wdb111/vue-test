@@ -151,6 +151,10 @@ export default {
               name:'颜色选择器',
               url:'/to_color_picker'
           },
+          {
+              name:'虚拟滚动',
+              url:'/to_virtual_rolling'
+          }
       ]
     }
   },

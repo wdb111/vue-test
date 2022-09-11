@@ -3,35 +3,40 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 // import myPlugin from "wdb-npm-practice";
-import ViewUI from 'view-design';
-import 'view-design/dist/styles/iview.css';
+import ViewUI from 'view-design'
+import 'view-design/dist/styles/iview.css'
 import SIdentify from './components/Identify/identify'//验证码
 import echarts from 'echarts'
-import Vant from 'vant';
-import 'vant/lib/index.css';
-import waterfall from 'vue-waterfall2';//瀑布流
+import Vant from 'vant'
+import 'vant/lib/index.css'
+import waterfall from 'vue-waterfall2'//瀑布流
 
+Vue.mixin({
+    created () {
+        console.log('全局mixin')
+    }
+})
 Vue.use(waterfall)
 import vcolorpicker from 'vcolorpicker'//颜色选择器
 Vue.use(vcolorpicker)
 
-Vue.use(Vant);
+Vue.use(Vant)
 Vue.prototype.$echarts = echarts
 Vue.use(SIdentify)
-Vue.use(ViewUI);
+Vue.use(ViewUI)
 // Vue.use(myPlugin);
-Vue.use(ElementUI);
+Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  components: {
-    App
-  },
-  template: '<App/>'
+    el: '#app',
+    router,
+    components: {
+        App
+    },
+    template: '<App/>'
 })
