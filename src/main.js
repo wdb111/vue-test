@@ -14,14 +14,12 @@ import Vant from 'vant'
 import 'vant/lib/index.css'
 import waterfall from 'vue-waterfall2'//瀑布流
 
-Vue.mixin({
-    created () {
-        console.log('全局mixin')
-    }
-})
 Vue.use(waterfall)
 import vcolorpicker from 'vcolorpicker'//颜色选择器
 Vue.use(vcolorpicker)
+import VueCropper from 'vue-cropper'//截图插件
+
+Vue.use(VueCropper)
 
 Vue.use(Vant)
 Vue.prototype.$echarts = echarts
